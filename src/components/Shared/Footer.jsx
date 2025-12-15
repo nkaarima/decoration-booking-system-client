@@ -6,7 +6,7 @@ import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 const Footer = () => {
     return (
         <div className="bg-base-200">
-            <footer className="flex text-center space-y-2.5 flex-col items-center justify-between p-10 text-[18px] 
+            <footer className="flex text-center space-y-2.5 flex-col items-start justify-between p-10 text-[18px] 
                     md:flex-row">
              
              <div>
@@ -19,7 +19,7 @@ const Footer = () => {
             
              <div>
 
-               <p>Social Links</p>
+               <p className="font-bold">Social Links</p>
                 
                 <div className="flex">
                     <a><FaFacebookF></FaFacebookF></a>
@@ -30,9 +30,8 @@ const Footer = () => {
              </div>
 
              <div>
-                Working hours:
-                <p>8am-8pm</p>
-                <p>Sun-Thurs</p>
+                  Working hours
+                <p>Sun-Thurs,8am-8pm</p>
              </div>
                
                    

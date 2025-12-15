@@ -83,8 +83,8 @@ const Navbar = () => {
                             Home
                             </Link>
                             
-                            <Link className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>Dashboard</Link>
-                            <Link className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>SignUp</Link>
+                            <Link to="/dashboard" className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>Dashboard</Link>
+                            <Link to="/signup" className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>SignUp</Link>
                             
                         </div>
                         </div>
