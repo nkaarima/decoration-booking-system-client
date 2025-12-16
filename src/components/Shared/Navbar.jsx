@@ -5,12 +5,15 @@ import { Link, NavLink, useNavigate } from 'react-router';
 import logoImg from '../../assets/decor-logo.png'
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
+import placeholderImg from '../../assets/placeholder.jpg'
 
 const Navbar = () => {
 
     const [isOpen,setIsOpen] = useState(false);
 
     const {user,logOut} = use(AuthContext);
+
+    console.log(user);
 
     const naviagate=useNavigate();
 
@@ -82,6 +85,7 @@ const Navbar = () => {
                                 <div className='hidden md:block'>
                                     {/* Avatar */}
                                     <img
+                                     src={user && user.photoURL ? user.photoURL : placeholderImg}
                                     className='rounded-full'
                                     referrerPolicy='no-referrer'
                                     alt='profile'

@@ -7,35 +7,39 @@ import { Link, useNavigate } from 'react-router';
 
 const SignUp = () => {
 
-    const {signUp} = use(AuthContext);
+    const {signUp, updateUser} = use(AuthContext);
      const navigate= useNavigate();
-     
+
      const {register, handleSubmit, formState:errors} = useForm();
 
      const handleFormSubmit = async (data) => {
 
-          console.log(data);
+         try{
 
-          const {email,image,password} = data;
+           console.log(data);
+
+          const {name,email,image,password} = data;
           const imageFile= image[0];
 
           const imagePath= await imageUpload(imageFile);
 
-          signUp(email,password)
-          .then(() => {
+          console.log('Image Path is:',imagePath);
 
-            toast.success('SignUp is successfull')
-             navigate('/') })
+          const result = await signUp(email,password);
+          
+          await updateUser(name,imagePath)
+           toast.success('SignUp is successfull')
+            navigate('/') 
             
-            .catch(error => {
+           } catch(error) {
 
                 toast.error(error.message)
-            })
-          
+            }
+
+    }
 
 
-     }
-
+      
 
     return (
         
@@ -44,6 +48,15 @@ const SignUp = () => {
                 <form onSubmit={handleSubmit(handleFormSubmit)} className="card-body">
 
                     <fieldset className="fieldset">
+
+                       <label className="label">Name</label>
+
+                    <input type="text" className="input" 
+                          placeholder="Full Name"
+                           {...register('name', {required:true})} />
+                    
+                    {errors.email && <p className="text-red-400">Please provide your email</p>}
+
                     <label className="label">Email</label>
 
                     <input type="email" className="input" 
