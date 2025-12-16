@@ -1,15 +1,18 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import React, { use, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import logoImg from '../../assets/decor-logo.png'
 import { AuthContext } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
 
     const [isOpen,setIsOpen] = useState(false);
 
-    const {user} = use(AuthContext);
+    const {user,logOut} = use(AuthContext);
+
+    const naviagate=useNavigate();
 
     const links = 
     <>
@@ -18,6 +21,16 @@ const Navbar = () => {
       <li><NavLink to="/about-us">About Us</NavLink></li>
       <li><NavLink to="/contact">Contact</NavLink></li>
     </>
+
+    const handleLogout = () => {
+       
+        logOut()
+        .then(()=> {
+            toast.success('Logout is successful');
+            naviagate('/')
+        })
+          
+    }
 
     
     return (
@@ -96,7 +109,7 @@ const Navbar = () => {
                                 <>
                                 
                                 <Link to="/dashboard" className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>Dashboard</Link>
-                                <Link className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>Logout</Link>
+                                <a onClick={handleLogout} className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>Logout</a>
                                 
                                 
                                 </>
