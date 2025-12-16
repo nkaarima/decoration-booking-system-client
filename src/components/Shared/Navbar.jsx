@@ -1,12 +1,15 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { Link, NavLink } from 'react-router';
-import logoImg from '../../assets/logo.jpg'
+import logoImg from '../../assets/decor-logo.png'
+import { AuthContext } from '../../context/AuthContext';
 
 const Navbar = () => {
 
     const [isOpen,setIsOpen] = useState(false);
+
+    const {user} = use(AuthContext);
 
     const links = 
     <>
@@ -18,9 +21,13 @@ const Navbar = () => {
 
     
     return (
-
-            <div className="navbar bg-base-100 shadow-sm">
-                
+          
+          <div className="relative h-125">
+             
+              <img src="/home-bg.jpg" className="absolute inset-0 object-cover w-full h-full rounded-[20px]" alt="" />
+         
+               <div className="navbar shadow-sm">
+                     
                 <div className="navbar-start">
                     <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -35,13 +42,13 @@ const Navbar = () => {
                      
                      <div className="flex items-center">
                         
-                     <img src={logoImg} className="w-1/4 h-1/4" alt="" />
+                     <img src={logoImg} className="w-1/4 h-1/4 rounded-4xl" alt="" />
                     <a className="btn btn-ghost text-3xl font-bold">Smart Decor</a>
                      </div>
                 </div>
 
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal px-1 text-[18px]">
                     {links}
                     </ul>
                 </div>
@@ -82,9 +89,29 @@ const Navbar = () => {
                             >
                             Home
                             </Link>
+
+                            {
+                                user ? 
+                                
+                                <>
+                                
+                                <Link to="/dashboard" className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>Dashboard</Link>
+                                <Link className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>Logout</Link>
+                                
+                                
+                                </>
+
+                                : <>
+                                
+                                <Link to="/signup" className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>SignUp</Link>
+                                 <Link to="/login" className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>Login</Link>
+                                
+                                
+                                
+                                </>
+                            }
                             
-                            <Link to="/dashboard" className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>Dashboard</Link>
-                            <Link to="/signup" className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'>SignUp</Link>
+                            
                             
                         </div>
                         </div>
@@ -95,7 +122,10 @@ const Navbar = () => {
                 </div>
         
         </div>
-            
+
+
+          </div>
+
        
         
     );

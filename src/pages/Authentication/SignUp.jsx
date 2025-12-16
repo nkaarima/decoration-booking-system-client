@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { imageUpload } from '../../utility';
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const SignUp = () => {
 
@@ -67,6 +67,8 @@ const SignUp = () => {
 
                     <button className="btn btn-neutral mt-4">SignUp</button>
                     </fieldset>
+
+                    <p>Already have an account? <Link to="/login">Login</Link></p>
                 </form>
                 
            
