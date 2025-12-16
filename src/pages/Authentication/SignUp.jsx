@@ -9,8 +9,7 @@ const SignUp = () => {
 
     const {signUp} = use(AuthContext);
      const navigate= useNavigate();
-
- 
+     
      const {register, handleSubmit, formState:errors} = useForm();
 
      const handleFormSubmit = async (data) => {
