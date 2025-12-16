@@ -38,7 +38,6 @@ const Navbar = () => {
 
     
     return (
- 
           <div>
 
             <div className="navbar shadow-sm">
@@ -50,7 +49,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex="-1"
-                        className="menu menu-sm  dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm text-small dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         {links}
                     </ul>
                     </div>
@@ -63,7 +62,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 text-[18px]">
+                    <ul className="menu menu-horizontal px-1 text-small">
                     {links}
                     </ul>
                 </div>
@@ -136,15 +135,15 @@ const Navbar = () => {
                   
                    
                 </div>
-
-                
-        
              
               </div>
 
-              <div className="mt-5">
-                     <img src={decorImg} className="w-full rounded-2xl" alt="" />
-                 </div>
+                  {/* Image */}
+
+                    <div className="relative mt-30 w-full h-112.5">
+                            <img src={decorImg} className="w-full h-full object-cover rounded-2xl" alt="" />
+                    
+                        </div>
           </div>
             
 
