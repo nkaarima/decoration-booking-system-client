@@ -7,7 +7,7 @@ const SideBar = () => {
          <div className="bg-[#cbbeb5] space-y-2">
 
                    <div className="flex items-center">                     
-                       <h1 className="hidden md:block"><Link to="/" className="btn btn-ghost text-3xl font-bold">Smart Decor</Link></h1>
+                       <h1 className="hidden md:block"><Link to="/" className="btn btn-ghost text-large font-bold">Smart Decor</Link></h1>
                          <AiOutlineMenu size={24} />
                                    
                     </div>              

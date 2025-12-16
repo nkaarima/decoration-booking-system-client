@@ -1,0 +1,50 @@
+[
+  {
+    "service_name": "Home Living Room Decoration",
+    "cost": 15000,
+    "unit": "per room",
+    "service_category": "home",
+    "description": "Complete living room decoration including furniture arrangement, lighting setup, and wall decor.",
+    "createdByEmail": "admin@decorationco.com"
+  },
+  {
+    "service_name": "Wedding Stage Decoration",
+    "cost": 50000,
+    "unit": "per event",
+    "service_category": "wedding",
+    "description": "Elegant wedding stage decoration with floral arrangements, drapery, and lighting.",
+    "createdByEmail": "admin@decorationco.com"
+  },
+  {
+    "service_name": "Office Workspace Decoration",
+    "cost": 12000,
+    "unit": "per floor",
+    "service_category": "office",
+    "description": "Decorate office floor with ergonomic layouts, decorative partitions, and indoor plants.",
+    "createdByEmail": "admin@decorationco.com"
+  },
+  {
+    "service_name": "Birthday Party Decoration",
+    "cost": 8000,
+    "unit": "per event",
+    "service_category": "seminar",
+    "description": "Birthday event decoration including balloons, banners, and themed props.",
+    "createdByEmail": "admin@decorationco.com"
+  },
+  {
+    "service_name": "Home Garden Decoration",
+    "cost": 2000,
+    "unit": "per sqrt-ft",
+    "service_category": "home",
+    "description": "Decorate home garden with flowers, shrubs, lights, and small garden furniture.",
+    "createdByEmail": "admin@decorationco.com"
+  },
+  {
+    "service_name": "Corporate Meeting Room Setup",
+    "cost": 6000,
+    "unit": "per meeting",
+    "service_category": "meeting",
+    "description": "Professional decoration for meeting rooms including table setup, lighting, and branding elements.",
+    "createdByEmail": "admin@decorationco.com"
+  }
+]
