@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import DecorationServiceCard from './DecorationServiceCard';
 
 const DecorationService = () => {
 
@@ -19,18 +20,17 @@ const DecorationService = () => {
     })
 
 
-
-
     }, [axiosInstance])
 
     return (
           <div>
-            <h1 className="text-large font-bold text-center mb-2.5">Our Services</h1>
+            <h1 className="text-large font-bold text-center mb-2">Our Services</h1>
 
-          <div className="w-full grid grid-cols-3 gap-4">
+          <div className="w-full grid grid-cols-3 gap-4 items-center">
              
-             {serviceData.map(data => <img key={data._id} src={data.image} className="w-full h-full object-cover"></img>)}
-          </div>
+             {serviceData.map(data => <DecorationServiceCard key={data._id} data={data}></DecorationServiceCard>)}
+          
+           </div>
 
 
         </div>

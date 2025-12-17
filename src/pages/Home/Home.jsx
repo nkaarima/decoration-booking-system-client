@@ -1,5 +1,5 @@
 import React from 'react';
-import DecorationService from './DecorationService';
+import DecorationService from './DecorationService/DecorationService';
 
 const Home = () => {
     
