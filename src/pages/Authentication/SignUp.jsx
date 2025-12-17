@@ -25,7 +25,7 @@ const SignUp = () => {
 
           console.log('Image Path is:',imagePath);
 
-          const result = await signUp(email,password);
+          await signUp(email,password);
           
           await updateUser(name,imagePath)
            toast.success('SignUp is successfull')
@@ -78,7 +78,7 @@ const SignUp = () => {
                     <button className="btn btn-neutral mt-4">SignUp</button>
                     </fieldset>
 
-                    <p>Already have an account? <Link to="/login">Login</Link></p>
+                    <p>Already have an account? <Link to="login">Login</Link></p>
                 </form>
                 
            

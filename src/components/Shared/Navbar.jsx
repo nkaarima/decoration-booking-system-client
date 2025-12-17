@@ -14,7 +14,7 @@ const Navbar = () => {
 
     const {user,logOut} = use(AuthContext);
 
-    console.log(user);
+    //console.log(user);
 
     const naviagate=useNavigate();
 
@@ -140,7 +140,7 @@ const Navbar = () => {
 
                   {/* Image */}
 
-                    <div className="relative mt-30 w-full h-112.5">
+                    <div className="relative mt-30 w-full md:w-full h-112.5">
                             <img src={decorImg} className="w-full h-full object-cover rounded-2xl" alt="" />
                     
                         </div>

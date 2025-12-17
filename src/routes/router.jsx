@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home";
 import SignUp from "../pages/Authentication/SignUp";
 import Login from "../pages/Authentication/Login";
 import DashBoardLayout from "../layout/DashBoardLayout";
+import ManageService from "../pages/DashBoard/ManageService";
+import MyProfile from "../pages/DashBoard/Shared/MyProfile";
 
 export const router= createBrowserRouter([
 
@@ -19,12 +21,12 @@ export const router= createBrowserRouter([
          },
 
          {
-            path:"/signup",
+            path:"signup",
             element:<SignUp></SignUp>
          },
 
          {
-            path:'/login',
+            path:'login',
             element:<Login></Login>
          }
 
@@ -33,7 +35,23 @@ export const router= createBrowserRouter([
 
       {
          path:"/dashboard",
-         element:<DashBoardLayout></DashBoardLayout>
+         element:<DashBoardLayout></DashBoardLayout>,
+         children:
+         [
+
+            {
+              index:true,
+              element:<MyProfile></MyProfile>
+            },
+
+            {
+                path:"manage-service",
+                element:<ManageService></ManageService>
+            }
+
+
+
+         ]
       }
 
  

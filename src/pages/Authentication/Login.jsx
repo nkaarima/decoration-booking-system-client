@@ -53,7 +53,7 @@ const Login = () => {
                     <button className="btn btn-neutral mt-4">Login</button>
                     </fieldset>
 
-                    <p>New to this place?<Link to="/signup">Signup</Link></p>
+                    <p>New to this place?<Link to="signup">Signup</Link></p>
                 </form>
 
 

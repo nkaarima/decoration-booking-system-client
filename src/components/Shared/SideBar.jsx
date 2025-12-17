@@ -13,11 +13,11 @@ const SideBar = () => {
                     </div>              
  
                      <ul className="space-y-7 text-small p-4">
-                        <li>My Bookings</li>
-                        <li>Payment History</li>
-                        <li>My Profile</li>
-                        <li>Manage Decorators</li>
-                        <li>Manage Services & Packages</li>
+                        <li><Link>My Bookings</Link></li>
+                        <li><Link>Payment History</Link></li>
+                        <li><Link>My Profile</Link></li>
+                        <li><Link>Manage Decorators</Link></li>
+                        <li><Link to="manage-service">Manage Services & Packages</Link></li>
                      </ul>                 
                 
              </div>
