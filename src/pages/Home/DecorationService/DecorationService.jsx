@@ -10,7 +10,7 @@ const DecorationService = () => {
 
     useEffect(() => {
 
-        axiosInstance.get('/services-top-3')
+        axiosInstance.get(`${import.meta.env.VITE_API_URL}/services-top-3`)
         .then(data => {
 
          console.log(data);

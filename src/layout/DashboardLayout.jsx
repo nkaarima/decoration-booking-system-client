@@ -5,7 +5,7 @@ import { Outlet } from 'react-router';
 const DashBoardLayout = () => {
     return (
         
-        <div className="flex gap-3">
+        <div className="flex flex-col md:flex-row gap-3">
     
               <SideBar></SideBar>
 

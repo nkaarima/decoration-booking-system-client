@@ -1,6 +1,6 @@
 import React, { use } from 'react';
 import { useForm } from 'react-hook-form';
-import { imageUpload } from '../../utility';
+import { imageUpload, saveOrUpdateUser } from '../../utility';
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router';
@@ -26,6 +26,8 @@ const SignUp = () => {
           console.log('Image Path is:',imagePath);
 
           await signUp(email,password);
+
+          await saveOrUpdateUser({name,email,image:imagePath});
           
           await updateUser(name,imagePath)
            toast.success('SignUp is successfull')
@@ -38,17 +40,25 @@ const SignUp = () => {
 
     }
 
-    const handleGoogleLogin = () => {
+    const handleGoogleLogin = async () => {
     
-             googleLogin()
-             .then(() => {
-                 
-                navigate('/');
-             })
-    
-             .catch(error => {
-                toast.error(error.message);
-             })
+             try {
+      
+                 const {user} = await googleLogin()
+                await saveOrUpdateUser({
+        
+                    name:user?.displayName,
+                    email:user?.email,
+                    image:user?.photoURL }) 
+
+                    toast.success('SignUp is successfull')
+                    navigate('/') 
+            
+                 } catch(error) {
+
+                toast.error(error.message)
+             }
+             
         }
  
     return (

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router';
+import { saveOrUpdateUser } from '../../utility';
 
 const Login = () => {
 
@@ -13,40 +14,48 @@ const Login = () => {
    const {login,googleLogin} = use(AuthContext);
 
 
-   const handleFormSubmit = (data) => {
+   const handleFormSubmit = async (data) => {
   
      const {email,password} = data;
 
-     login(email,password)
-     .then(() => {
+     try{
 
-         toast.success('Login successful');
-         navigate('/');
-     })
-     .catch(error => {
-         
+         const {user} = await login(email,password);
+         await saveOrUpdateUser({
+      
+             name:user?.displayName,
+             email:user?.email,
+             image:user?.photoURL }) 
+             navigate('/');
+             toast.success('Login successful');
+    
+    } catch(error){
+
          toast.error(error.message);
-     })
-
-   
-   
     }
-
-    const handleGoogleLogin = () => {
-
-         googleLogin()
-         .then(() => {
-             
-            navigate('/');
-         })
-
-         .catch(error => {
-            toast.error(error.message);
-         })
-    }
-
-   
   
+    }
+
+    const handleGoogleLogin =  async () => {
+        
+        try {
+
+        const {user}= await googleLogin();
+
+         await saveOrUpdateUser({
+      
+             name:user?.displayName,
+             email:user?.email,
+             image:user?.photoURL }) 
+             navigate('/');
+             toast.success('Login successful');
+    
+       } catch(error){
+
+         toast.error(error.message);
+    }
+
+    }
 
     return (
         
