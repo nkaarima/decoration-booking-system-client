@@ -6,7 +6,8 @@ import Login from "../pages/Authentication/Login";
 import DashBoardLayout from "../layout/DashBoardLayout";
 import ManageService from "../pages/DashBoard/ManageService";
 import MyProfile from "../pages/DashBoard/Shared/MyProfile";
-import ServiceCardDetails from "../pages/Home/DecorationService/ServiceCardDetails";
+import ServiceCardDetails from "../pages/Home/DecorationService/ServiceDetails";
+import ServiceDetails from "../pages/Home/DecorationService/ServiceDetails";
 
 export const router= createBrowserRouter([
 
@@ -32,9 +33,9 @@ export const router= createBrowserRouter([
          },
 
           {
-               path:"service-details",
-               element:<ServiceCardDetails></ServiceCardDetails>
-            },
+               path:"service-details/:id",
+               element:<ServiceDetails></ServiceDetails>
+          },
 
 
     ]},
