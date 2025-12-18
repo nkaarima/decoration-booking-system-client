@@ -3,7 +3,6 @@ import React, { use, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { Link, NavLink, useNavigate } from 'react-router';
 import logoImg from '../../assets/decor-logo.png'
-import decorImg from '../../assets/decor2.jpg'
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 import placeholderImg from '../../assets/placeholder.jpg'
@@ -138,22 +137,9 @@ const Navbar = () => {
              
               </div>
 
-                  {/* Image */}
-
-                    <div className="relative mt-30 w-full md:w-full h-112.5">
-                            <img src={decorImg} className="w-full h-full object-cover rounded-2xl" alt="" />
-                    
-                        </div>
+                 
           </div>
-            
-
-             
-
-             
-
-
-
-       
+        
         
     );
 };

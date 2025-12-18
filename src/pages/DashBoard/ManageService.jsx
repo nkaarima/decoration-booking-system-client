@@ -44,7 +44,7 @@ const ManageService = () => {
 
     return (
       
-        <div className="card bg-base-100 w-full mx-auto mt-[150px] max-w-sm shrink-0 shadow-2xl">
+        <div className="card bg-base-100 w-full mx-auto mt-37.5 max-w-sm shrink-0 shadow-2xl">
                 <form onSubmit={handleSubmit(handleFormSubmit)} className="card-body">
                     <fieldset className="fieldset grid grid-cols-1 md:grid-cols-2 gap-2 text-small">
 

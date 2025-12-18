@@ -51,7 +51,6 @@ const SignUp = () => {
              })
         }
  
-
     return (
         
              <div className="card bg-base-100 w-full max-w-sm  mx-auto shrink-0 shadow-2xl">
