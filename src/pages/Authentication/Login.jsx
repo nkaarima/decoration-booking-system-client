@@ -1,9 +1,10 @@
-import React, { use } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router';
 import { saveOrUpdateUser } from '../../utility';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
 
@@ -11,7 +12,7 @@ const Login = () => {
 
    const navigate =useNavigate();
 
-   const {login,googleLogin} = use(AuthContext);
+   const {login,googleLogin} = useAuth();
 
 
    const handleFormSubmit = async (data) => {

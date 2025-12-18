@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import DecorationServiceCard from './DecorationServiceCard';
+import Loading from '../../Loading';
+import useDataLoading from '../../../hooks/useDataLoading';
 
 const DecorationService = () => {
 
     const [serviceData,setService]= useState([]);
+
+    const {dataLoading,setDataLoading} = useDataLoading();
+
 
     const axiosInstance=useAxiosSecure();
 
@@ -13,14 +18,23 @@ const DecorationService = () => {
         axiosInstance.get(`${import.meta.env.VITE_API_URL}/services-top-3`)
         .then(data => {
 
-         console.log(data);
-         const services=data.data;
-         setService(services);
+          if(data.data)
+          {  
+              setDataLoading(false);
+              //console.log(data);
+              const services=data.data;
+              setService(services);
+          }
 
-    })
+      })
 
 
-    }, [axiosInstance])
+    },[axiosInstance,setDataLoading])
+
+    if(dataLoading)
+    {
+      return <Loading></Loading>
+    }
 
     return (
           <div>

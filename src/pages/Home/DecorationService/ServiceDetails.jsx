@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import useDataLoading from '../../../hooks/useDataLoading';
+import Loading from '../../Loading';
 
 const ServiceDetails = () => {
 
-    const [serviceData,setServiceData] = useState({})
+    const [serviceData,setServiceData] = useState({});
+    const {dataLoading,setDataLoading}= useDataLoading();
 
     const {id} = useParams();
     //console.log(id);
@@ -14,14 +17,18 @@ const ServiceDetails = () => {
 
          axios.get(`${import.meta.env.VITE_API_URL}/plant-detail/${id}`)
          .then((data) => {
-        setServiceData(data.data)
+        setServiceData(data.data);
+        setDataLoading(false);
     })
 
-     }, [id])
+     }, [id,setDataLoading])
 
     const {serviceName,serviceCategory,cost,unit,image,description} = serviceData;
 
-    
+  if(dataLoading)
+    {
+        return <Loading></Loading>
+    }    
 
 
     return (

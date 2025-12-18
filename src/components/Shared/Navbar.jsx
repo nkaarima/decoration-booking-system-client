@@ -1,17 +1,18 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { Link, NavLink, useNavigate } from 'react-router';
 import logoImg from '../../assets/decor-logo.png'
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 import placeholderImg from '../../assets/placeholder.jpg'
+import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
 
     const [isOpen,setIsOpen] = useState(false);
 
-    const {user,logOut} = use(AuthContext);
+    const {user,logOut} = useAuth();
 
     //console.log(user);
 

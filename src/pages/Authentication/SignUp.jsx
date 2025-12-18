@@ -1,13 +1,14 @@
-import React, { use } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { imageUpload, saveOrUpdateUser } from '../../utility';
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router';
+import useAuth from '../../hooks/useAuth';
 
 const SignUp = () => {
 
-    const {signUp, updateUser,googleLogin} = use(AuthContext);
+    const {signUp, updateUser,googleLogin} = useAuth();
      const navigate= useNavigate();
 
      const {register, handleSubmit, formState:errors} = useForm();

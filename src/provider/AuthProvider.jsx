@@ -18,12 +18,14 @@ const AuthProvider = ({children}) => {
      }
 
      const login = (email,password) => {
-
-         return signInWithEmailAndPassword(auth,email,password);
+         
+        setLoading(true);
+        return signInWithEmailAndPassword(auth,email,password);
      }
 
      const logOut = () => {
 
+         setLoading(true);
          return signOut(auth);
      }
 
@@ -39,6 +41,7 @@ const AuthProvider = ({children}) => {
 
      const googleLogin = () => {
 
+        setLoading(true);
         return signInWithPopup(auth,googleProvider);
      }
     

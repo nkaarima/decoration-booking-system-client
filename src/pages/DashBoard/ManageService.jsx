@@ -1,13 +1,14 @@
-import React, { use } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { imageUpload } from '../../utility';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthContext';
+import useAuth from '../../hooks/useAuth';
 
 const ManageService = () => {
 
-    const {user} = use(AuthContext);
+    const {user} = useAuth();
 
     const {register,handleSubmit,reset} = useForm();
 
