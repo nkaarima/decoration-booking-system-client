@@ -15,7 +15,7 @@ const ServiceDetails = () => {
    
      useEffect(() => {
 
-         axios.get(`${import.meta.env.VITE_API_URL}/plant-detail/${id}`)
+         axios.get(`${import.meta.env.VITE_API_URL}/service-details/${id}`)
          .then((data) => {
         setServiceData(data.data);
         setDataLoading(false);

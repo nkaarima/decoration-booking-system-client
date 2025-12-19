@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const DecorationServiceCard = ({data}) => {
 
-    console.log(data);
+    //console.log(data);
 
     const {_id,image,description,cost} =data
     return (

@@ -55,6 +55,11 @@ export const router= createBrowserRouter([
             {
                 path:"manage-service",
                 element:<ManageService></ManageService>
+            },
+
+            {
+               path:"my-profile",
+               element:<MyProfile></MyProfile>
             }
 
 
