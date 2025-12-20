@@ -8,6 +8,8 @@ import ManageService from "../pages/DashBoard/ManageService";
 import MyProfile from "../pages/DashBoard/Shared/MyProfile";
 import ServiceDetails from "../pages/Home/DecorationServiceCard/ServiceDetails";
 import AllDecorationServices from "../pages/Home/AllDecorationServices/AllDecorationServices";
+import ManageBooking from "../pages/DashBoard/UserDashBoard/ManageBooking";
+
 
 export const router= createBrowserRouter([
 
@@ -65,7 +67,13 @@ export const router= createBrowserRouter([
             {
                path:"my-profile",
                element:<MyProfile></MyProfile>
+            },
+
+            {
+               path:"my-booking",
+               element:<ManageBooking></ManageBooking>
             }
+
 
 
 
