@@ -2,21 +2,63 @@ import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const BookModal = ({serviceData,closeModal, isOpen}) => {
 
-    console.log(serviceData);
+    const {_id: decorationServiceId,cost:decorationCost,serviceName,serviceCategory} = serviceData || {};
 
     const {register, handleSubmit} = useForm();
 
-    const handleFormSubmit = data => {
+    const {user} = useAuth();
+
+    const axiosSecure= useAxiosSecure();
+
+
+    const handleFormSubmit =  async (data) => {
 
         console.log(data);
         closeModal();
-        toast.success('Booking has been placed')
+
+        const {bookingDate,location} = data;
+
+        const serviceDate= new Date(bookingDate);
+
+        console.log(data);
+       
+         const bookingData= {
+            
+           decorationServiceId,
+           serviceName,
+           serviceCategory,
+           decorationCost,
+            serviceDate,
+           location,
+           customer: {
+             name: user?.displayName,
+             email: user?.email
+           }
+
+         }
+
+         await axiosSecure.post('/my-bookings',bookingData)
+         .then(res => {
+           
+            if(res.data.insertedId)
+            {
+               toast.success('Booking has been placed')
+            }
+         })
+
+         .catch(error => {
+          toast.error(error.message)
+         })
+       
+      
     }
 
-    const {_id,cost,serviceName,serviceCategory} = serviceData || {};
+   
     return (
         <div>
             <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={closeModal}>
@@ -31,6 +73,19 @@ const BookModal = ({serviceData,closeModal, isOpen}) => {
                   >
                     Review the decoration service before booking
                   </DialogTitle>
+                 
+                   <div className="mt-2">
+                    <p className="text-sm text-gray-500">
+                      Name: {user?.displayName}
+                    </p>
+                  </div>
+
+                  <div className="mt-2">
+                    <p className="text-sm text-gray-500">
+                      Email: {user?.email}
+                    </p>
+                  </div>
+
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
                       Service Name: {serviceName}
@@ -45,7 +100,7 @@ const BookModal = ({serviceData,closeModal, isOpen}) => {
 
                    <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Price: BDT {cost}
+                      Price: BDT {decorationCost}
                     </p>
                   </div>
 

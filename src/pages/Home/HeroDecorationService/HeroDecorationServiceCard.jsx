@@ -1,7 +1,8 @@
 import React from 'react';
 
 const HeroDecorationServiceCard = ({data}) => {
-     const {image} =data
+     
+    const {image} =data
 
     return (
        <div className="text-small w-87.5 h-62.5 mx-auto">

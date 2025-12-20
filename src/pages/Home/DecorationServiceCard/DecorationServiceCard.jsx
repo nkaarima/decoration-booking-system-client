@@ -5,15 +5,19 @@ const DecorationServiceCard = ({data}) => {
 
     //console.log(data);
 
-    const {_id,image,cost} =data
+    const {_id,image,cost,serviceCategory} =data
     return (
         <div className="text-small w-87.5 h-62.5 mx-auto">
             <img src={image} className="w-full h-full object-cover rounded-lg"></img>
              
              <div>
-                 <div className="flex gap-3 items-start justify-center m-3.5">
-                     <p className="text-center">BDT {cost}</p>
-                     <Link to={`/service-details/${_id}`} className="btn">Book Now</Link>
+                 <div className="m-3.5 text-center">
+                    <p>{serviceCategory}</p>
+                     <div className="flex items-center gap-3 justify-center">
+                         <p>BDT {cost}</p>
+                     
+                       <Link to={`/service-details/${_id}`} className="btn">Book Now</Link>
+                     </div>
                  </div>
                 
              </div>

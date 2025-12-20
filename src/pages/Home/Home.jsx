@@ -1,6 +1,6 @@
 import React from 'react';
 import BackgroundImage from './BackgroundImage/BackgroundImage';
-import HeroDecorationService from './HeroDecorationService.jsx/HeroDecorationService';
+import HeroDecorationService from './HeroDecorationService/HeroDecorationService';
 
 const Home = () => {
     
