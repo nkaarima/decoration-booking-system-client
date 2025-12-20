@@ -5,10 +5,11 @@ import Loading from '../../Loading';
 
 const MyProfile = () => {
     const {user} = useAuth();
-    const [role,dataLoading] = useRole();
+    const [role,roleLoading] = useRole();
+    console.log('The role is',role);
     //console.log(user);
 
-    if(dataLoading)
+    if(roleLoading)
     {
         return <Loading></Loading>
     }

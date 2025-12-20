@@ -1,0 +1,17 @@
+import React from 'react';
+import { Link } from 'react-router';
+
+const DecoratorSideBar = () => {
+    return (
+        <div>
+            <ul>
+                <li><Link>My Assigned Projects</Link></li>
+                <li><Link>Today's Schedule</Link></li>
+                <li><Link>Update Project Status</Link></li>
+                <li><Link>Earnings Summary</Link></li>
+            </ul>
+        </div>
+    );
+};
+
+export default DecoratorSideBar;

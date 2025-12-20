@@ -1,13 +1,13 @@
 import React from 'react';
-import DecorationService from './DecorationService/DecorationService';
 import BackgroundImage from './BackgroundImage/BackgroundImage';
+import HeroDecorationService from './HeroDecorationService.jsx/HeroDecorationService';
 
 const Home = () => {
     
     return (
       <div className="space-y-7">
         <BackgroundImage></BackgroundImage>
-         <DecorationService></DecorationService>
+         <HeroDecorationService></HeroDecorationService>
       </div>
     );
 };

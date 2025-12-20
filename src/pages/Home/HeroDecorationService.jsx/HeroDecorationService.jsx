@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import DecorationServiceCard from './DecorationServiceCard';
-import Loading from '../../Loading';
 import useDataLoading from '../../../hooks/useDataLoading';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Loading from '../../Loading';
+import HeroDecorationServiceCard from './HeroDecorationServiceCard';
 
-const DecorationService = () => {
-
-    const [serviceData,setService]= useState([]);
+const HeroDecorationService = () => {
+     const [serviceData,setService]= useState([]);
 
     const {dataLoading,setDataLoading} = useDataLoading();
 
@@ -35,20 +34,26 @@ const DecorationService = () => {
     {
       return <Loading></Loading>
     }
-
+    
+    
+    
     return (
-          <div>
+        <div>
+            
+            <div>
             <h1 className="text-large font-bold text-center mb-2">Our Services</h1>
 
           <div className="w-full grid grid-cols-1 justify-center md:grid-cols-3 gap-4 items-center space-y-25 md:space-y-0">
              
-             {serviceData.map(data => <DecorationServiceCard key={data._id} data={data}></DecorationServiceCard>)}
+             {serviceData.map(data => <HeroDecorationServiceCard key={data._id} data={data}></HeroDecorationServiceCard>)}
           
            </div>
 
 
         </div>
+
+        </div>
     );
 };
 
-export default DecorationService;
+export default HeroDecorationService;

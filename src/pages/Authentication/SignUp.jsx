@@ -108,7 +108,7 @@ const SignUp = () => {
                                      </button>
                  
                  
-                                     <p className="text-center mt-2.5">Already have an account?<Link to="login" className="text-blue-500">Login</Link></p>
+                                     <p className="text-center mt-2.5">Already have an account?<Link to="/login" className="text-blue-500">Login</Link></p>
         </div>
     );
 };

@@ -89,7 +89,7 @@ const Login = () => {
                     </button>
 
 
-                    <p className="text-center mt-2.5">Don't have an account?<Link to="signup" className="text-blue-500"> Signup</Link></p>
+                    <p className="text-center mt-2.5">Don't have an account?<Link to="/signup" className="text-blue-500"> Signup</Link></p>
 
         </div>
     );
