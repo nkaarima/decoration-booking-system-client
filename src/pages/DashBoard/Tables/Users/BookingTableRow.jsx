@@ -40,10 +40,6 @@ const BookingTableRow = ({booking}) => {
           <button onClick={() => setIsCancel(true)} className="btn bg-red-200 rounded-lg">Cancel</button>
           <CancelBooking isCancel={isCancel} closeCancelModal={closeCancelModal} booking={booking}></CancelBooking>
         </td>
-        
-        <td>
-          <button className="btn bg-green-400 rounded-lg">Update</button>
-        </td>
 
         <td>
           <button onClick={() => setIsOpen(true)} className="btn rounded-lg">Pay</button>

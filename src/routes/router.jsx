@@ -4,7 +4,7 @@ import Home from "../pages/Home/Home";
 import SignUp from "../pages/Authentication/SignUp";
 import Login from "../pages/Authentication/Login";
 import DashBoardLayout from "../layout/DashBoardLayout";
-import ManageService from "../pages/DashBoard/ManageService";
+import ManageService from "../pages/DashBoard/AdminDashBoard/ManageService";
 import MyProfile from "../pages/DashBoard/Shared/MyProfile";
 import ServiceDetails from "../pages/Home/DecorationServiceCard/ServiceDetails";
 import AllDecorationServices from "../pages/Home/AllDecorationServices/AllDecorationServices";

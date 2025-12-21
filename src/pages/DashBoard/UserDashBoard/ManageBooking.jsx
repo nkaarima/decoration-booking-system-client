@@ -28,7 +28,6 @@ const ManageBooking = () => {
         <th>Service Category</th>
         <th>Price</th>
         <th>Cancel</th>
-        <th>Update</th>
         <th>Pay</th>
       </tr>
     </thead>

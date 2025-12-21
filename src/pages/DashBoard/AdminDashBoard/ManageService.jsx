@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { imageUpload } from '../../utility';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { imageUpload } from '../../../utility';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
-import { AuthContext } from '../../context/AuthContext';
-import useAuth from '../../hooks/useAuth';
+import { AuthContext } from '../../../context/AuthContext';
+import useAuth from '../../../hooks/useAuth';
+import DecorationTableRow from '../Tables/Admin/DecorationTableRow';
+
 
 const ManageService = () => {
 
     const {user} = useAuth();
+
+    const [serviceData,setServiceData] = useState([]);
 
     const {register,handleSubmit,reset} = useForm();
 
@@ -48,10 +52,20 @@ const ManageService = () => {
 
          
     }
+      
+         useEffect(()=> {
+
+            axiosInstance.get('/all-services')
+           .then(data => {
+             setServiceData(data.data);
+         })
+         },[serviceData,axiosInstance])
+
 
     return (
       
-        <div className="card bg-base-100 w-full mx-auto mt-25 max-w-sm shrink-0 shadow-2xl">
+        <div>
+            <div className="card bg-base-100 shrink-0 shadow-2xl w-full mx-auto mb-8 max-w-sm ">
               <h1 className="text-large font-bold p-2 text-center">Create Decoration Service</h1>
                 <form onSubmit={handleSubmit(handleFormSubmit)} className="card-body">
                     <fieldset className="fieldset grid grid-cols-1 md:grid-cols-2 gap-2 text-small">
@@ -93,7 +107,32 @@ const ManageService = () => {
 
                 </form>
    
-       </div>
+            </div>
+
+             <div>
+                <table className="table">
+    {/* head */}
+    <thead>
+      <tr>
+        <th>Service Name</th>
+        <th>Service Category</th>
+        <th>Price</th>
+        <th>Unit</th>
+        <th>Update</th>
+        <th>Cancel</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {serviceData.map(data => <DecorationTableRow key={data._id} data={data} />)}
+     
+
+    </tbody>
+    
+  </table>
+             </div>
+        </div>
+
     );
 };
 
