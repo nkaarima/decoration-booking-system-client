@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import EditService from '../../../../components/Modal/EditService';
+import DeleteService from '../../../../components/Modal/DeleteService';
 
 const DecorationTableRow = ({data}) => {
 
     const [isEdit,setIsEdit] = useState(false);
 
+    const [isDelete,setIsDelete] = useState(false);
+
     const closeEditModal = () => {
         setIsEdit(false);
+    }
+
+    const closeDeleteModal = () => {
+
+         setIsDelete(false);
     }
     return (
          <tr>
@@ -31,7 +39,8 @@ const DecorationTableRow = ({data}) => {
         </td>
 
         <td>
-          <button className="btn bg-red-500 rounded-lg">Cancel</button>
+          <button onClick={()=> setIsDelete(true)} className="btn bg-red-500 rounded-lg">Delete</button>
+          <DeleteService isDelete={isDelete} closeDeleteModal={closeDeleteModal} data={data}></DeleteService>
         </td>
           
       </tr>
