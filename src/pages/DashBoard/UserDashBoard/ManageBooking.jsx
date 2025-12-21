@@ -24,6 +24,7 @@ const ManageBooking = () => {
 
    },[axiosSecure,user?.email])
 
+  console.log(bookings);
 
 
     return (
@@ -35,14 +36,14 @@ const ManageBooking = () => {
         <th>Service Name</th>
         <th>Service Category</th>
         <th>Price</th>
-        <th>Update</th>
         <th>Cancel</th>
+        <th>Update</th>
         <th>Pay</th>
       </tr>
     </thead>
     <tbody>
 
-        {bookings.map(booking => <BookingTableRow booking={booking}></BookingTableRow>)}
+        {bookings.map(booking => <BookingTableRow key={booking._id} booking={booking}></BookingTableRow>)}
      
 
     </tbody>

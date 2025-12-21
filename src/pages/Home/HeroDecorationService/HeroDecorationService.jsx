@@ -16,13 +16,14 @@ const HeroDecorationService = () => {
 
         axiosInstance.get(`${import.meta.env.VITE_API_URL}/services-top-3`)
         .then(data => {
-
+         
+          setDataLoading(true);
           if(data.data)
           {  
-              setDataLoading(false);
               //console.log(data);
               const services=data.data;
               setService(services);
+               setDataLoading(false);
           }
 
       })

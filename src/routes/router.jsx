@@ -10,6 +10,7 @@ import ServiceDetails from "../pages/Home/DecorationServiceCard/ServiceDetails";
 import AllDecorationServices from "../pages/Home/AllDecorationServices/AllDecorationServices";
 import ManageBooking from "../pages/DashBoard/UserDashBoard/ManageBooking";
 import PaymentSuccess from "../pages/Payment/PaymentSuccess";
+import PaymentHistory from "../pages/DashBoard/UserDashBoard/PaymentHistory";
 
 
 export const router= createBrowserRouter([
@@ -78,6 +79,11 @@ export const router= createBrowserRouter([
             {
                path:"my-booking",
                element:<ManageBooking></ManageBooking>
+            },
+
+            {
+               path:"payment-history/:email",
+               element:<PaymentHistory></PaymentHistory>
             }
 
 
