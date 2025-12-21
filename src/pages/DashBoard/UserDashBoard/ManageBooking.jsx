@@ -8,6 +8,7 @@ const ManageBooking = () => {
    const {user} = useAuth();
    const axiosSecure= useAxiosSecure();
 
+
    const [bookings, setBookings] = useState([]);
   
    useEffect(() => {
@@ -16,11 +17,15 @@ const ManageBooking = () => {
    .then(res => {
     console.log('The data is',res.data);
     setBookings(res.data);
+   
    })
 
 
 
    },[axiosSecure,user?.email])
+
+
+
     return (
         <div className="overflow-x-auto w-11/12 mx-auto mt-3.5">
   <table className="table">

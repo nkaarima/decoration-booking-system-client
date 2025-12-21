@@ -3,9 +3,16 @@ import { Link } from 'react-router';
 import { AiOutlineMenu } from 'react-icons/ai'; 
 import useRole from '../../hooks/useRole';
 import UserSideBar from './UserSideBar';
+import AdminSideBar from './AdminSideBar'
+import Loading from '../../pages/Loading';
 
 const SideBar = () => {
     const [role,roleLoading] = useRole();
+
+    if(roleLoading)
+    {
+      return <Loading></Loading>
+    }
 
     return (
          <div className="bg-[#cbbeb5] space-y-2">
@@ -21,6 +28,10 @@ const SideBar = () => {
                          {
                            role === 'customer' && <UserSideBar></UserSideBar>
 
+                        }
+
+                        {
+                          role === 'admin' && <AdminSideBar></AdminSideBar>
                         }
 
                         <p className="space-y-7 text-small p-4"><Link to="my-profile">My Profile</Link></p>

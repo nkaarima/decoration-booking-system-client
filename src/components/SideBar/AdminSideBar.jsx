@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const AdminSideBar = () => {
     return (
         <div>
-            <ul>
+            <ul className="space-y-7 text-small p-4">
                 <li><Link>Manage Decorators</Link></li>
                 <li><Link to="manage-service">Manage Services and Packages</Link></li>
                 <li><Link>Manage Bookings</Link></li>

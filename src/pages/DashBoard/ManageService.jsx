@@ -25,7 +25,13 @@ const ManageService = () => {
         const image= await imageUpload(imageFile);
 
         const decorationService={
-            serviceName, image, cost,unit, serviceCategory,description,email
+            serviceName, 
+            image, 
+            cost:Number(cost) ,
+            unit,
+             serviceCategory,
+             description,
+             email
         }
           
         axiosInstance.post('/service', decorationService)

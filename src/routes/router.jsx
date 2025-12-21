@@ -9,6 +9,7 @@ import MyProfile from "../pages/DashBoard/Shared/MyProfile";
 import ServiceDetails from "../pages/Home/DecorationServiceCard/ServiceDetails";
 import AllDecorationServices from "../pages/Home/AllDecorationServices/AllDecorationServices";
 import ManageBooking from "../pages/DashBoard/UserDashBoard/ManageBooking";
+import PaymentSuccess from "../pages/Payment/PaymentSuccess";
 
 
 export const router= createBrowserRouter([
@@ -44,6 +45,11 @@ export const router= createBrowserRouter([
                element:<ServiceDetails></ServiceDetails>
           },
 
+           {
+         path:"/payment-sucess",
+         element:<PaymentSuccess></PaymentSuccess>
+          }
+
 
     ]},
          
@@ -77,15 +83,12 @@ export const router= createBrowserRouter([
 
 
 
-         ]
-      }
+         ],
 
- 
+        
+      },
 
-
-
-
-
+     
 
 
 

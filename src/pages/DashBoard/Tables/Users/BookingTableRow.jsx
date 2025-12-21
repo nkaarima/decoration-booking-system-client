@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PaymentModal from '../../../../components/Modal/PaymentModal';
 
 const BookingTableRow = ({booking}) => {
  
    console.log(booking);
+
+   const [isOpen,setIsOpen] = useState(false);
+   const closeModal = () => {
+      
+      setIsOpen(false)
+   }
    
 
     return (
@@ -29,8 +36,10 @@ const BookingTableRow = ({booking}) => {
         </td>
 
         <td>
-          <button className="btn rounded-lg">Pay</button>
+          <button onClick={() => setIsOpen(true)} className="btn rounded-lg">Pay</button>
+          <PaymentModal isOpen={isOpen} closeModal={closeModal} booking={booking}></PaymentModal>
         </td>
+          
       </tr>
 
    
