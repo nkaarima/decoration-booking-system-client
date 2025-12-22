@@ -1,43 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import useDataLoading from '../../../hooks/useDataLoading';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import Loading from '../../Loading';
+import React, { use} from 'react';
 import HeroDecorationServiceCard from './HeroDecorationServiceCard';
 
-const HeroDecorationService = () => {
-     const [serviceData,setService]= useState([]);
+const HeroDecorationService = ({topServicePromise}) => {
+  
+     const serviceData= use(topServicePromise);
+     console.log('The data is',serviceData);
 
-    const {dataLoading,setDataLoading} = useDataLoading();
-
-
-    const axiosInstance=useAxiosSecure();
-
-    useEffect(() => {
-
-        axiosInstance.get(`${import.meta.env.VITE_API_URL}/services-top-3`)
-        .then(data => {
-         
-          setDataLoading(true);
-          if(data.data)
-          {  
-              //console.log(data);
-              const services=data.data;
-              setService(services);
-               setDataLoading(false);
-          }
-
-      })
-
-
-    },[axiosInstance,setDataLoading])
-
-    if(dataLoading)
-    {
-      return <Loading></Loading>
-    }
-    
-    
-    
     return (
         <div>
             

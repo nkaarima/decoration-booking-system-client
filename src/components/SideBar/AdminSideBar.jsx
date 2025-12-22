@@ -5,7 +5,7 @@ const AdminSideBar = () => {
     return (
         <div>
             <ul className="space-y-7 text-small p-4">
-                <li><Link>Manage Decorators</Link></li>
+                <li><Link to="manage-decorator">Manage Decorators</Link></li>
                 <li><Link to="manage-service">Manage Services and Packages</Link></li>
                 <li><Link>Manage Bookings</Link></li>
                 <li><Link>Assign Decorator</Link></li>

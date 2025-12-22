@@ -11,6 +11,7 @@ import AllDecorationServices from "../pages/Home/AllDecorationServices/AllDecora
 import ManageBooking from "../pages/DashBoard/UserDashBoard/ManageBooking";
 import PaymentSuccess from "../pages/Payment/PaymentSuccess";
 import PaymentHistory from "../pages/DashBoard/UserDashBoard/PaymentHistory";
+import ManageDecorators from "../pages/DashBoard/AdminDashBoard/ManageDecorators";
 
 
 export const router= createBrowserRouter([
@@ -84,6 +85,11 @@ export const router= createBrowserRouter([
             {
                path:"payment-history/:email",
                element:<PaymentHistory></PaymentHistory>
+            },
+
+            {
+               path:"manage-decorator",
+               element:<ManageDecorators></ManageDecorators>
             }
 
 
