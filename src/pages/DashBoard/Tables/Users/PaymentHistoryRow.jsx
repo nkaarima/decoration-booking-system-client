@@ -17,7 +17,6 @@ const PaymentHistoryRow  = ({payment}) => {
 
         <td>{payment?.category}</td>
         <td>{payment?.price}</td>
-        <td>{payment?.status}</td>
           
       </tr>   
        

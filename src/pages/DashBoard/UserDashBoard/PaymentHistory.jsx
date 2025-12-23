@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import PaymentHistoryRow from '../Tables/Users/PaymentHistoryRow';
 import { useParams } from 'react-router';
@@ -9,25 +9,17 @@ const PaymentHistory = () => {
 
     const axiosSecure= useAxiosSecure();
    
-    console.log(email);
+    console.log('The email is',email);
 
     const [paymentData,setPaymentData] = useState([]);
 
-
-
-    useEffect(() => {
-
+    
      axiosSecure.get(`/payment-info/${email}`)
      .then(data => {
 
-          console.log(data.data);     
+          console.log('The data is:', data.data);     
           setPaymentData(data.data)
      })
-
-
-
-    }, [axiosSecure,email])
-
 
 
     return (
@@ -40,7 +32,6 @@ const PaymentHistory = () => {
         <th>Service Name</th>
         <th>Service Category</th>
         <th>Price</th>
-        <th>Status</th>
       </tr>
     </thead>
     <tbody>

@@ -33,7 +33,8 @@ const BookModal = ({serviceData,closeModal, isOpen}) => {
            serviceName,
            serviceCategory,
            decorationCost,
-            serviceDate,
+           serviceDate,
+           isPaid:false,
            location,
            customer: {
              name: user?.displayName,

@@ -37,13 +37,31 @@ const BookingTableRow = ({booking}) => {
         <td>{booking?.decorationCost}</td>
 
         <td>
-          <button onClick={() => setIsCancel(true)} className="btn bg-red-200 rounded-lg">Cancel</button>
-          <CancelBooking isCancel={isCancel} closeCancelModal={closeCancelModal} booking={booking}></CancelBooking>
+          { booking.isPaid ? <button className="btn bg-red-200 rounded-lg">Cannot be Cancelled</button>
+             : <>
+             
+             <button onClick={() => setIsCancel(true)} className="btn bg-red-200 rounded-lg">Cancel</button>
+             <CancelBooking isCancel={isCancel} closeCancelModal={closeCancelModal} booking={booking}></CancelBooking>
+                         
+             </>
+          }
+          
         </td>
 
         <td>
-          <button onClick={() => setIsOpen(true)} className="btn rounded-lg">Pay</button>
-          <PaymentModal isOpen={isOpen} closeModal={closeModal} booking={booking}></PaymentModal>
+           {booking.isPaid ? 
+           
+           <button className="btn rounded-lg">Paid</button> :  <>
+           
+            <button onClick={() => setIsOpen(true)} className="btn rounded-lg">Pay</button>
+            <PaymentModal isOpen={isOpen} closeModal={closeModal} booking={booking}></PaymentModal>
+           
+           </>
+            }
+          
+
+           
+          
         </td>
           
       </tr>

@@ -9,8 +9,9 @@ const ManageBooking = () => {
    const axiosSecure= useAxiosSecure();
 
    const [bookings, setBookings] = useState([]);
-  
-    axiosSecure.get(`/my-bookings/${user?.email}`)
+
+   
+   axiosSecure.get(`/my-bookings/${user?.email}`)
     .then(res => {
     console.log('The data is',res.data);
     setBookings(res.data);
