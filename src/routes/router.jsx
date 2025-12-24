@@ -12,6 +12,7 @@ import ManageBooking from "../pages/DashBoard/UserDashBoard/ManageBooking";
 import PaymentSuccess from "../pages/Payment/PaymentSuccess";
 import PaymentHistory from "../pages/DashBoard/UserDashBoard/PaymentHistory";
 import ManageDecorators from "../pages/DashBoard/AdminDashBoard/ManageDecorators";
+import AssignDecorator from "../pages/DashBoard/AdminDashBoard/AssignDecorator";
 
 
 export const router= createBrowserRouter([
@@ -90,6 +91,11 @@ export const router= createBrowserRouter([
             {
                path:"manage-decorator",
                element:<ManageDecorators></ManageDecorators>
+            },
+
+            {
+               path:"assign-decorator",
+               element:<AssignDecorator></AssignDecorator>
             }
 
 

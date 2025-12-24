@@ -19,7 +19,7 @@ const SideBar = () => {
 
                    <div className="flex items-center gap-1.5">                     
                        <h1 className="hidden md:block"><Link to="/" className="btn btn-ghost text-large font-bold">Smart Decor</Link></h1>
-                         <AiOutlineMenu size={20} />
+                         <Link to="/"><AiOutlineMenu size={20} /></Link>
                                    
                     </div> 
 

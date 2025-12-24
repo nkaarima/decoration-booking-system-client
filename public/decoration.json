@@ -1,50 +1,94 @@
-[
-  {
-    "service_name": "Home Living Room Decoration",
-    "cost": 15000,
-    "unit": "per room",
-    "service_category": "home",
-    "description": "Complete living room decoration including furniture arrangement, lighting setup, and wall decor.",
-    "createdByEmail": "admin@decorationco.com"
-  },
-  {
-    "service_name": "Wedding Stage Decoration",
-    "cost": 50000,
-    "unit": "per event",
-    "service_category": "wedding",
-    "description": "Elegant wedding stage decoration with floral arrangements, drapery, and lighting.",
-    "createdByEmail": "admin@decorationco.com"
-  },
-  {
-    "service_name": "Office Workspace Decoration",
-    "cost": 12000,
-    "unit": "per floor",
-    "service_category": "office",
-    "description": "Decorate office floor with ergonomic layouts, decorative partitions, and indoor plants.",
-    "createdByEmail": "admin@decorationco.com"
-  },
-  {
-    "service_name": "Birthday Party Decoration",
-    "cost": 8000,
-    "unit": "per event",
-    "service_category": "seminar",
-    "description": "Birthday event decoration including balloons, banners, and themed props.",
-    "createdByEmail": "admin@decorationco.com"
-  },
-  {
-    "service_name": "Home Garden Decoration",
-    "cost": 2000,
-    "unit": "per sqrt-ft",
-    "service_category": "home",
-    "description": "Decorate home garden with flowers, shrubs, lights, and small garden furniture.",
-    "createdByEmail": "admin@decorationco.com"
-  },
-  {
-    "service_name": "Corporate Meeting Room Setup",
-    "cost": 6000,
-    "unit": "per meeting",
-    "service_category": "meeting",
-    "description": "Professional decoration for meeting rooms including table setup, lighting, and branding elements.",
-    "createdByEmail": "admin@decorationco.com"
-  }
-]
+{
+  "services": [
+    {
+      "id": "DS-001",
+      "service_name": "Premium Wedding Stage Decoration",
+      "cost_bdt": 85000,
+      "unit": "per event",
+      "service_category": "wedding",
+      "description": "Luxury wedding stage decoration with floral backdrop, lighting, and seating setup.",
+      "createdByEmail": "admin@decorationhub.com"
+    },
+    {
+      "id": "DS-002",
+      "service_name": "Home Birthday Decoration",
+      "cost_bdt": 15000,
+      "unit": "per room",
+      "service_category": "home",
+      "description": "Balloon, banner, and LED light decoration for birthday celebrations at home.",
+      "createdByEmail": "admin@decorationhub.com"
+    },
+    {
+      "id": "DS-003",
+      "service_name": "Office Interior Decoration",
+      "cost_bdt": 120,
+      "unit": "per sqr-ft",
+      "service_category": "office",
+      "description": "Modern office decoration including lighting, wall design, and indoor plants.",
+      "createdByEmail": "admin@decorationhub.com"
+    },
+    {
+      "id": "DS-004",
+      "service_name": "Seminar Hall Decoration",
+      "cost_bdt": 40000,
+      "unit": "per event",
+      "service_category": "seminar",
+      "description": "Stage, podium, banner placement, and professional lighting for seminars.",
+      "createdByEmail": "admin@decorationhub.com"
+    },
+    {
+      "id": "DS-005",
+      "service_name": "Meeting Room Minimal Setup",
+      "cost_bdt": 8000,
+      "unit": "per room",
+      "service_category": "meeting",
+      "description": "Simple meeting room decoration with backdrop and table setup.",
+      "createdByEmail": "admin@decorationhub.com"
+    },
+    {
+      "id": "DS-006",
+      "service_name": "Engagement Ceremony Decoration",
+      "cost_bdt": 50000,
+      "unit": "per event",
+      "service_category": "wedding",
+      "description": "Elegant engagement ceremony decoration with floral and lighting themes.",
+      "createdByEmail": "admin@decorationhub.com"
+    },
+    {
+      "id": "DS-007",
+      "service_name": "Home Living Room Decoration",
+      "cost_bdt": 180,
+      "unit": "per sqr-ft",
+      "service_category": "home",
+      "description": "Living room wall, curtain, and lighting decoration for special occasions.",
+      "createdByEmail": "admin@decorationhub.com"
+    },
+    {
+      "id": "DS-008",
+      "service_name": "Corporate Event Decoration",
+      "cost_bdt": 65000,
+      "unit": "per event",
+      "service_category": "office",
+      "description": "Corporate event decoration including stage design, branding, and lighting.",
+      "createdByEmail": "admin@decorationhub.com"
+    },
+    {
+      "id": "DS-009",
+      "service_name": "Wedding Entrance Gate Decoration",
+      "cost_bdt": 30000,
+      "unit": "per gate",
+      "service_category": "wedding",
+      "description": "Floral and lighting decoration for wedding entrance gates.",
+      "createdByEmail": "admin@decorationhub.com"
+    },
+    {
+      "id": "DS-010",
+      "service_name": "Conference Room Decoration",
+      "cost_bdt": 12000,
+      "unit": "per room",
+      "service_category": "meeting",
+      "description": "Professional conference room decoration with backdrop and lighting.",
+      "createdByEmail": "admin@decorationhub.com"
+    }
+  ]
+}

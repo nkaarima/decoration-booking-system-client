@@ -31,7 +31,7 @@ const ServiceDetails = () => {
         setDataLoading(false);
     })
 
-     }, [id,setDataLoading])
+     }, [id])
 
     const {serviceName,serviceCategory,cost,unit,image,description} = serviceData;
 
