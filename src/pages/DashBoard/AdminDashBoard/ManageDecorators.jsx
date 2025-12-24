@@ -13,7 +13,7 @@ const ManageDecorators = () => {
       
          console.log(data);
 
-         const {name,email,speciality,skills,experience,rating, availabilityStatus} = data
+         const {name,email,speciality,skills,experience,rating} = data
 
          const decoratorInfo = {         
                 name,
@@ -22,7 +22,7 @@ const ManageDecorators = () => {
                 skills,
                 experience_years:Number(experience),
                 rating_num:Number(rating),
-                availabilityStatus          
+                accountStatus:'pending'          
 
          }
    
@@ -72,10 +72,6 @@ const ManageDecorators = () => {
                              <input type="text" className="input"
                               {...register('rating')} />
                            
-
-                            <label className="label">Availability Status</label>
-                            <input type="text" className="input"
-                             {...register('availabilityStatus')} />
 
                             
                     </fieldset>

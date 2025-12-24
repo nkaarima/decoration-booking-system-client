@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 const AssignDecoratorTableRow = ({user}) => {
 
-    const {serviceDate,serviceCategory,location,customer} = user || {};
+    const {_id,serviceDate,serviceCategory,location,customer} = user || {};
     const [decorator,setDecorator] = useState([]);
 
     const {register, handleSubmit} = useForm();
@@ -27,6 +27,7 @@ const AssignDecoratorTableRow = ({user}) => {
         const decoratorName= decoratorInfo.split('-')[0];
 
         const projectInfo ={
+           bookingId:_id,
            decoratorName,
            serviceDate,
            location,
@@ -38,11 +39,15 @@ const AssignDecoratorTableRow = ({user}) => {
         await axiosSecure.post('/projects',projectInfo)
         .then(data => {
            
-           if(data.data.insertedId)
+           if(data)
            {
             toast.success('Decorator has been assigned')
            }
-        }) 
+        })
+        
+        .catch(error => {
+           toast.error(error.message);
+        })
        
 
      }
