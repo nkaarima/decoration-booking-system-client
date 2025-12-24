@@ -5,6 +5,7 @@ import useRole from '../../hooks/useRole';
 import UserSideBar from './UserSideBar';
 import AdminSideBar from './AdminSideBar'
 import Loading from '../../pages/Loading';
+import DecoratorSideBar from './DecoratorSideBar';
 
 const SideBar = () => {
     const [role,roleLoading] = useRole();
@@ -32,6 +33,10 @@ const SideBar = () => {
 
                         {
                           role === 'admin' && <AdminSideBar></AdminSideBar>
+                        }
+
+                        {
+                          role === 'decorator' && <DecoratorSideBar></DecoratorSideBar>
                         }
 
                         <p className="space-y-7 text-small p-4"><Link to="my-profile">My Profile</Link></p>

@@ -24,7 +24,7 @@ const ManageAccountRow = ({account}) => {
                toast.success('Account is approved');
              }
 
-             else if(accountInfo.status === 'disabled'){
+             else if(accountInfo.status === 'disenabled'){
                 toast.success('Account is disenabled')
 
              }

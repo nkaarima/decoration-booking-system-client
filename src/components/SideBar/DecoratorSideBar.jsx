@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const DecoratorSideBar = () => {
     return (
         <div>
-            <ul>
+            <ul className="space-y-7 text-small p-4">
                 <li><Link>My Assigned Projects</Link></li>
                 <li><Link>Today's Schedule</Link></li>
                 <li><Link>Update Project Status</Link></li>

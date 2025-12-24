@@ -22,7 +22,7 @@ const ManageDecorators = () => {
                 skills,
                 experience_years:Number(experience),
                 rating_num:Number(rating),
-                accountStatus:'pending'          
+                accountStatus:'pending'         
 
          }
    
