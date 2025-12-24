@@ -14,6 +14,8 @@ import PaymentHistory from "../pages/DashBoard/UserDashBoard/PaymentHistory";
 import ManageDecorators from "../pages/DashBoard/AdminDashBoard/ManageDecorators";
 import AssignDecorator from "../pages/DashBoard/AdminDashBoard/AssignDecorator";
 import ManageAccount from "../pages/DashBoard/AdminDashBoard/ManageAccount";
+import PrivateRoute from "./PrivateRoute";
+import ReviewBooking from "../pages/DashBoard/AdminDashBoard/ReviewBooking";
 
 
 export const router= createBrowserRouter([
@@ -42,11 +44,19 @@ export const router= createBrowserRouter([
          {
             path:"/services",
             element:<AllDecorationServices></AllDecorationServices>
+         
          },
 
           {
                path:"/service-details/:id",
-               element:<ServiceDetails></ServiceDetails>
+               element:
+   
+               
+                 <PrivateRoute>
+                  <ServiceDetails></ServiceDetails>
+                 </PrivateRoute>
+               
+               
           },
 
            {
@@ -60,13 +70,23 @@ export const router= createBrowserRouter([
 
       {
          path:"/dashboard",
-         element:<DashBoardLayout></DashBoardLayout>,
+         element:
+             
+           <PrivateRoute>
+            <DashBoardLayout></DashBoardLayout>
+           </PrivateRoute>,
+           
+         
+         
+        
          children:
          [
 
             {
               index:true,
-              element:<MyProfile></MyProfile>
+              element:       
+                <MyProfile></MyProfile>        
+              
             },
 
             {
@@ -102,6 +122,17 @@ export const router= createBrowserRouter([
             {
                path:"approve-decorators",
                element:<ManageAccount></ManageAccount>
+            },
+
+            {
+               path:"manage-booking",
+               element:<ManageBooking></ManageBooking>
+               
+            },
+
+            {
+               path:"review-booking",
+               element:<ReviewBooking></ReviewBooking>
             }
 
 

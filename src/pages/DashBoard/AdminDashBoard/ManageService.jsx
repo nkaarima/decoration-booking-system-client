@@ -59,7 +59,7 @@ const ManageService = () => {
            .then(data => {
              setServiceData(data.data);
          })
-         },[serviceData,axiosInstance])
+         },[axiosInstance])
 
 
     return (
