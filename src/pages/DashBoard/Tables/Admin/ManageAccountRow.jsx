@@ -1,13 +1,26 @@
 import React from 'react';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Loading from '../../../Loading';
 
 const ManageAccountRow = ({account}) => {
 
-    const {name,email,speciality,experience_years,accountStatus} = account || {};
+    const {name,email,speciality,experience_years} = account || {};
 
+    const queryClient = useQueryClient();
 
     const axiosSecure=useAxiosSecure();
+
+    const {isPending, mutateAsync,reset} = useMutation({
+
+       mutationFn: async (accountInfo) => await axiosSecure.put(`/manage-decorator-account/${email}`,accountInfo),
+       onSuccess: () => {
+          
+             reset();
+             queryClient.invalidateQueries(['decorator-account'])
+       }
+    })
 
     const handleApprove =  async (status) => {
 
@@ -16,26 +29,21 @@ const ManageAccountRow = ({account}) => {
             status
         }
     
-        await axiosSecure.put(`/manage-decorator-account/${email}`,accountInfo)
-        .then(() => {
-
-            if(accountInfo.status === 'approved')
-             {
-               toast.success('Account is approved');
-             }
-
-             else if(accountInfo.status === 'disenabled'){
-                toast.success('Account is disenabled')
-
-             }
-
-             
-        })
-        .catch(error => {
+        try{
+          
+          await mutateAsync(accountInfo)
+        } 
+        catch(error) {
            toast.error(error?.message)
-        });
+        
+          };
         
 
+    }
+
+    if(isPending)
+    {
+      return <Loading></Loading>
     }
 
     
@@ -59,7 +67,7 @@ const ManageAccountRow = ({account}) => {
         <td>
           <button onClick={()=>handleApprove('approved')} className="btn bg-green-200 rounded-lg">
               {
-                 accountStatus==='approved' ? <span>Approved</span> : <span>Approve</span>
+                 account.accountStatus==='approved' ? <span>Approved</span> : <span>Approve</span>
                 }</button>
           
         </td>
@@ -68,7 +76,7 @@ const ManageAccountRow = ({account}) => {
           <button onClick={()=>handleApprove('disenabled') } className="btn bg-secondary rounded-lg">
             
             {
-               accountStatus==='disenabled' ? <span>Disenabled</span> : <span>Disable</span>
+               account.accountStatus==='disenabled' ? <span>Disenabled</span> : <span>Disable</span>
             }</button>
          
         </td>

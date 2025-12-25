@@ -1,12 +1,27 @@
-import React, { use } from 'react';
+import React from 'react';
 import ManageAccountRow from '../Tables/Admin/ManageAccountRow';
 import Loading from '../../Loading';
-
-const accountPromise = fetch(`${import.meta.env.VITE_API_URL}/all-decorators`).then(res => res.json());
+import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const ManageAccount = () => {
+   
+    const axiosSecure=useAxiosSecure();
+
+    const {data: accounts = [], isLoading} = useQuery({
+
+        queryKey:['decorator-account'],
+        queryFn: async () => {
+            const result= await axiosSecure.get('/all-decorators')
+            return result.data
+        } 
+    })
+
+    if(isLoading)
+    {
+        return <Loading></Loading>
+    }
     
-    const accounts= use(accountPromise);
     return (
           
           
