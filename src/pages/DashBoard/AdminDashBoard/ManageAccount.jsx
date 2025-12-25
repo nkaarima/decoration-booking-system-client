@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import React, { use } from 'react';
 import ManageAccountRow from '../Tables/Admin/ManageAccountRow';
+import Loading from '../../Loading';
+
+const accountPromise = fetch(`${import.meta.env.VITE_API_URL}/all-decorators`).then(res => res.json());
 
 const ManageAccount = () => {
     
-    const axiosSecure=useAxiosSecure();
-    const [accounts,setAccounts] = useState([]);
-
-    axiosSecure.get('/all-decorators')
-    .then(data => {
-         setAccounts(data.data);
-    })
-    
+    const accounts= use(accountPromise);
     return (
           
           

@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import DecorationServiceCard from '../DecorationServiceCard/DecorationServiceCard';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../../Loading';
 
 const AllDecorationServices = () => {
 
-    const [serviceData, setserviceData] = useState([]);
- 
-    const axiosSecure=useAxiosSecure();
+   const axiosSecure=useAxiosSecure();
+
+   const {data: serviceData = [], isLoading} = useQuery({
+   
+     queryKey:['allServices'],
+     queryFn: async () => {
+
+         const result = await axiosSecure.get('/all-services')
+         return result.data
+     }
+     
+   })
+
+   if(isLoading)
+   {
+    return <Loading></Loading>
+   }
     
-     useEffect(() => {
-
-         axiosSecure.get('/all-services')
-            .then(data => {
-            
-                setserviceData(data.data);
-                
-            })
-
-
-
-     }, [axiosSecure])
-
-     console.log(serviceData);
-
     
    
     return (

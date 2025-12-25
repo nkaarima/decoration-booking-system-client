@@ -6,20 +6,22 @@ const AssignDecorator = () => {
   
     const axiosSecure=useAxiosSecure();
 
-    const [paidUser,setPaidUser] = useState([]);
+    const [allUsers,setAllUsers] = useState([]);
     
     useEffect(()=> {
 
          axiosSecure.get('/all-bookings')
          .then(data => {
-         
-            setPaidUser(data.data)
+                 setAllUsers(data.data)       
+           
          })
-         
-
-        
+                
              
         },[axiosSecure])
+
+        //console.log(allUsers);
+
+    const paidUser= allUsers.filter(user => user.isPaid === true)
      
     return (
         <div>

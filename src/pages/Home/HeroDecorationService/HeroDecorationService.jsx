@@ -1,10 +1,31 @@
-import React, { use} from 'react';
+import React from 'react';
 import HeroDecorationServiceCard from './HeroDecorationServiceCard';
+import { useQuery } from '@tanstack/react-query'
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Loading from '../../Loading'
+const HeroDecorationService = () => {
 
-const HeroDecorationService = ({topServicePromise}) => {
-  
-     const serviceData= use(topServicePromise);
-     console.log('The data is',serviceData);
+  const axiosSecure=useAxiosSecure();
+ 
+   const {data:serviceData = [],isLoading} = useQuery({
+
+    queryKey: ['topService'],
+    queryFn: async () => 
+    {
+       const result= await axiosSecure.get('/services-top-3')
+       return result.data
+    }
+
+  })
+
+  if(isLoading)
+  {
+    return <Loading></Loading>
+  }
+  console.log(serviceData);
+
+
+
 
     return (
         <div>

@@ -16,6 +16,7 @@ import AssignDecorator from "../pages/DashBoard/AdminDashBoard/AssignDecorator";
 import ManageAccount from "../pages/DashBoard/AdminDashBoard/ManageAccount";
 import PrivateRoute from "./PrivateRoute";
 import ReviewBooking from "../pages/DashBoard/AdminDashBoard/ReviewBooking";
+import MakeUserDecorator from "../pages/DashBoard/AdminDashBoard/MakeUserDecorator";
 
 
 export const router= createBrowserRouter([
@@ -57,12 +58,9 @@ export const router= createBrowserRouter([
                  </PrivateRoute>
                
                
-          },
-
-           {
-         path:"/payment-sucess",
-         element:<PaymentSuccess></PaymentSuccess>
           }
+
+          
 
 
     ]},
@@ -104,6 +102,11 @@ export const router= createBrowserRouter([
                element:<ManageBooking></ManageBooking>
             },
 
+             {
+              path:"payment-sucess",
+              element:<PaymentSuccess></PaymentSuccess>
+          },
+
             {
                path:"payment-history/:email",
                element:<PaymentHistory></PaymentHistory>
@@ -133,6 +136,11 @@ export const router= createBrowserRouter([
             {
                path:"review-booking",
                element:<ReviewBooking></ReviewBooking>
+            },
+
+            {
+               path:"user-decorator",
+               element:<MakeUserDecorator></MakeUserDecorator>
             }
 
 

@@ -78,7 +78,7 @@ const Login = () => {
                              {...register('password')} />
                     
 
-                    <button className="btn btn-neutral mt-4">Login</button>
+                    <button className="btn bg-primary text-small mt-4">Login</button>
                     </fieldset>
                   
                 </form>

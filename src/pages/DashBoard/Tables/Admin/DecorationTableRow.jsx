@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import EditService from '../../../../components/Modal/EditService';
 import DeleteService from '../../../../components/Modal/DeleteService';
 
-const DecorationTableRow = ({data}) => {
+
+const DecorationTableRow = ({service}) => {
+
+  
 
     const [isEdit,setIsEdit] = useState(false);
 
@@ -21,26 +24,26 @@ const DecorationTableRow = ({data}) => {
        
          <td>
           
-          <div>{data?.serviceName}</div>      
+          <div>{service?.serviceName}</div>      
         </td>
        
         <td>
-          {data?.serviceCategory}
+          {service?.serviceCategory}
           
           <br />
         </td>
 
-        <td>{data?.cost}</td>
-        <td>{data?.unit}</td>
+        <td>{service?.cost}</td>
+        <td>{service?.unit}</td>
 
         <td>
           <button onClick={() => setIsEdit(true)} className="btn bg-green-200 rounded-lg">Update</button>
-           <EditService isEdit={isEdit} closeEditModal= {closeEditModal} data={data} />
+           <EditService isEdit={isEdit} closeEditModal= {closeEditModal} service={service} />
         </td>
 
         <td>
-          <button onClick={()=> setIsDelete(true)} className="btn bg-red-500 rounded-lg">Delete</button>
-          <DeleteService isDelete={isDelete} closeDeleteModal={closeDeleteModal} data={data}></DeleteService>
+          <button onClick={()=> setIsDelete(true)} className="btn bg-secondary rounded-lg">Delete</button>
+          <DeleteService isDelete={isDelete} closeDeleteModal={closeDeleteModal} service={service}></DeleteService>
         </td>
           
       </tr>

@@ -1,20 +1,51 @@
 import { Dialog,DialogPanel,DialogTitle } from '@headlessui/react';
 import React from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { toast } from 'react-toastify';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Loading from '../../pages/Loading';
+import ErrorPage from '../../pages/ErrorPage';
 
-const DeleteService = ({isDelete, closeDeleteModal, data}) => {
+const DeleteService = ({isDelete, closeDeleteModal, service}) => {
 
-    const {_id:id} = data || {};
+    const {_id:id} = service || {};
 
     const axiosSecure = useAxiosSecure();
 
+    const queryClient= useQueryClient();
+
+    const {isPending,isError,mutateAsync,reset}= useMutation({
+   
+      mutationFn: async (id) => await axiosSecure.delete(`/delete-service/${id}`),
+      onSuccess: () => {
+
+        toast.success('Service is deleted');
+        reset();
+        queryClient.invalidateQueries(['allServices']);
+
+      }
+
+
+    })
+
+
+    if(isPending)
+    {
+      return <Loading></Loading>
+    }
+
+    if(isError)
+    {
+      return <ErrorPage></ErrorPage>
+    }
+
     const handleDelete = async () => {
  
-        const result= await axiosSecure.delete(`/delete-service/${id}`);
+        await mutateAsync(id)
 
         closeDeleteModal();
 
-        console.log(result);
+        //console.log(result);
 
     }
     return (

@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { imageUpload } from '../../../utility';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
@@ -6,27 +6,53 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/AuthContext';
 import useAuth from '../../../hooks/useAuth';
 import DecorationTableRow from '../Tables/Admin/DecorationTableRow';
+import Loading from '../../Loading';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import ErrorPage from '../../ErrorPage';
 
 
 const ManageService = () => {
 
     const {user} = useAuth();
 
-    const [serviceData,setServiceData] = useState([]);
-
     const {register,handleSubmit,reset} = useForm();
 
     const axiosInstance = useAxiosSecure();
 
-    const handleFormSubmit = async (data) => {
+    const queryClient = useQueryClient();
+
+    const {isError,mutateAsync,reset:mutationReset} = useMutation({
+ 
+      mutationFn: async (decorationService) => await axiosInstance.post('/service', decorationService),
+      onSuccess: data => {
 
          console.log(data);
+         toast.success('Saved to database')
+         mutationReset()
+         queryClient.invalidateQueries(['allServices'])
+      
+        },
+
+        onError:error => {
+          toast.error(error.message)
+          
+
+        }
+  })
+
+  
+
+    const handleFormSubmit = async (data) => {
+
+         //console.log(data);
 
          const {serviceName, serviceImage, cost,unit, serviceCategory,description,email} =data;
 
          const imageFile= serviceImage[0];
          
-        const image= await imageUpload(imageFile);
+        try{
+
+          const image= await imageUpload(imageFile);
 
         const decorationService={
             serviceName, 
@@ -38,30 +64,37 @@ const ManageService = () => {
              email
         }
           
-        axiosInstance.post('/service', decorationService)
-        .then(data => {
-            console.log(data.data);
-            toast.success('Saved to database');
-            reset();
-        })
-
-        .catch(error => {
+         await mutateAsync(decorationService)
+         reset();
+        
+        } catch(error) {
 
              toast.error(error.message);
-        })
+        }
 
          
     }
+
+
+    const {data:serviceData =[],isLoading} = useQuery({
+
+       queryKey:['allServices'],
+       queryFn: async () =>  {
+
+          const result =await axiosInstance.get('/all-services')
+          return result.data
+       }
+    })
       
-         useEffect(()=> {
+      if(isLoading)
+      {
+        return <Loading></Loading>
+      }
 
-            axiosInstance.get('/all-services')
-           .then(data => {
-             setServiceData(data.data);
-         })
-         },[axiosInstance])
-
-
+      if(isError)
+      {
+        return <ErrorPage></ErrorPage>
+      }
     return (
       
         <div>
@@ -103,7 +136,7 @@ const ManageService = () => {
                               {...register('email')} />
                     </fieldset>
                          
-                           <button className="btn btn-neutral mt-4 text-small">Create Package</button>
+                           <button className="btn bg-primary mt-4 text-small">Create Package</button>
 
                 </form>
    
@@ -124,7 +157,7 @@ const ManageService = () => {
     </thead>
     <tbody>
 
-        {serviceData.map(data => <DecorationTableRow key={data._id} data={data} />)}
+        {serviceData.map(service => <DecorationTableRow key={service._id} service={service} />)}
      
 
     </tbody>

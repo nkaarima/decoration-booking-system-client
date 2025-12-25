@@ -98,7 +98,7 @@ const SignUp = () => {
                     <input type="file" className="input" placeholder="Image"
                       {...register('image')} />
 
-                    <button className="btn btn-neutral mt-4">SignUp</button>
+                    <button className="btn bg-primary text-small mt-4">SignUp</button>
                     </fieldset>
                 </form>
                 

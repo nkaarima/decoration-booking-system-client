@@ -42,7 +42,7 @@ const ManageDecorators = () => {
     return (
         <div>
               <div className="card bg-base-100 shrink-0 shadow-2xl mt-26 w-full mx-auto mb-8 max-w-sm ">
-              <h1 className="text-large font-bold p-2 text-center">Create Decoration Service</h1>
+              <h1 className="text-large font-bold p-2 text-center">Create Decorators</h1>
                 <form onSubmit={handleSubmit(handleFormSubmit)} className="card-body">
                     <fieldset className="fieldset grid grid-cols-1 md:grid-cols-2 gap-2 text-small">
 
@@ -76,7 +76,7 @@ const ManageDecorators = () => {
                             
                     </fieldset>
                          
-                           <button className="btn btn-neutral mt-4 text-small">Save Decorator Info</button>
+                           <button className="btn bg-primary mt-4 text-small">Save Decorator Info</button>
 
                 </form>
    

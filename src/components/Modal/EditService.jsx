@@ -3,13 +3,31 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-const EditService = ({isEdit,closeEditModal,data}) => {
-    const {register, handleSubmit} = useForm()
+const EditService = ({isEdit,closeEditModal,service}) => {
+    
+  const {register, handleSubmit} = useForm()
+  const queryClient= useQueryClient();
 
-    const {_id:id,serviceName,serviceCategory,cost,unit} = data || {};
+    const {_id:id,serviceName,serviceCategory,cost,unit} = service || {};
 
     const axiosSecure= useAxiosSecure();
+
+  const {mutateAsync,reset} = useMutation({
+   
+     mutationFn: async (dataToBeUpdated) => await axiosSecure.put(`edit-service/${id}`,dataToBeUpdated),
+           
+    onSuccess: data => {
+    
+             console.log(data);
+             toast.success('Edit is saved');
+             reset()
+             queryClient.invalidateQueries(['allServices'])
+          
+            }
+
+  })
 
     const handleFormSubmit = async (data) => 
     {
@@ -25,11 +43,14 @@ const EditService = ({isEdit,closeEditModal,data}) => {
             unit
          }
 
-         await axiosSecure.put(`edit-service/${id}`,dataToBeUpdated);
-
-         toast.success('Edit is saved');
+        try{
+           await mutateAsync(dataToBeUpdated);
 
          closeEditModal();
+        } catch (error) {
+
+           toast.error(error.message);
+        }
             
          
     }

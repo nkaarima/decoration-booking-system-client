@@ -65,7 +65,7 @@ const ManageAccountRow = ({account}) => {
         </td>
 
         <td>
-          <button onClick={()=>handleApprove('disenabled') } className="btn bg-red-500 rounded-lg">
+          <button onClick={()=>handleApprove('disenabled') } className="btn bg-secondary rounded-lg">
             
             {
                accountStatus==='disenabled' ? <span>Disenabled</span> : <span>Disable</span>
