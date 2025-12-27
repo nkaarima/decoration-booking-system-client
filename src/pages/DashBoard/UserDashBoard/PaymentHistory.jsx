@@ -10,23 +10,23 @@ const PaymentHistory = () => {
     const {email} = useParams();
 
     const axiosSecure= useAxiosSecure();
-   
-    //console.log('The email is',email);
+
     const {data : paymentData = [], isLoading} = useQuery({
    
-      queryKey: ['paymentInfo'],
+      queryKey: ['paymentInfo',email],
       queryFn: async () => {
-
         const result = await axiosSecure.get(`/payment-info/${email}`)
         return result.data
       }
 
-})
+   })
 
       if(isLoading)
       {
         return <Loading></Loading>
       }
+
+        
 
     return (
          <div className="overflow-x-auto w-11/12 mx-auto mt-3.5">

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 
 const AssignProjectRow = ({project}) => {
 
-    const {customer,serviceDate,location,_id} = project;
+    const {customer,serviceDate,location,_id,projectStatus} = project;
     const axiosSecure= useAxiosSecure();
     const {register,handleSubmit} = useForm();
 
@@ -45,7 +45,7 @@ const AssignProjectRow = ({project}) => {
             <td>
                 <form onChange={handleSubmit(handleStatusUpdate)}>
                
-                   <select {...register('status')}>
+                   <select {...register('status')} value={projectStatus}>
 
                     <option value='assigned'>Assigned</option>
                      <option value='planning'>Planning Phase</option>

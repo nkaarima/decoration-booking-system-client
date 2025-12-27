@@ -31,7 +31,7 @@ const HeroDecorationService = () => {
         <div>
             
             <div>
-            <h1 className="text-large font-bold text-center mb-2">Our Services</h1>
+            <h1 className="text-large font-bold text-center mb-6">Our Services</h1>
 
           <div className="w-full grid grid-cols-1 justify-center md:grid-cols-3 gap-4 items-center space-y-25 md:space-y-0">
              

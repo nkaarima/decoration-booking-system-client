@@ -14,6 +14,7 @@ const ManageBooking = () => {
    const {data: bookings = [], isLoading} = useQuery({
     
        queryKey:['bookings',user?.email],
+       enabled: !!user?.email,
        queryFn: async () =>
        {
         const result= await axiosSecure.get(`/my-bookings/${user?.email}`)

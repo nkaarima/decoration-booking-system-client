@@ -1,9 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import AssignProjectRow from '../Tables/Decorator/AssignProjectRow';
+import { useQuery } from '@tanstack/react-query';
 import Loading from '../../Loading';
+import TodaysSchedule from './TodaysSchedule';
 
 const AssignedProject = () => {
 
@@ -13,6 +14,7 @@ const AssignedProject = () => {
     const {data: projects = [], isLoading} = useQuery({
  
         queryKey:['project-info',user?.email],
+        enabled: !!user?.email,
         queryFn: async () => {
             const result= await axiosSecure.get(`/my-projects/${user?.email}`)
             return result.data
@@ -20,10 +22,13 @@ const AssignedProject = () => {
          
     })
 
-     if(isLoading)
-     {
-        return <Loading></Loading>
-     }
+    if(isLoading)
+    {
+      return <Loading></Loading>
+    }
+
+   
+         
     return (
         <div>
              <table className="table">
@@ -44,6 +49,7 @@ const AssignedProject = () => {
                </tbody>
                
              </table>
+
         </div>
     );
 };

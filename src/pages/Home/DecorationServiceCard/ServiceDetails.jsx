@@ -1,14 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import useDataLoading from '../../../hooks/useDataLoading';
 import Loading from '../../Loading';
 import BookModal from '../../../components/Modal/BookModal';
 
 const ServiceDetails = () => {
 
     const [serviceData,setServiceData] = useState({});
-    const {dataLoading,setDataLoading}= useDataLoading();
      const [isOpen,setIsOpen] = useState(false);
 
     const {id} = useParams();
@@ -17,28 +15,19 @@ const ServiceDetails = () => {
      const closeModal = () => {
         setIsOpen(false);
      }
- 
-
    
      useEffect(() => {
 
-        setDataLoading(true);
-
          axios.get(`${import.meta.env.VITE_API_URL}/service-details/${id}`)
          .then((data) => {
-         console.log(data.data);
+         //console.log(data.data);
         setServiceData(data.data);
-        setDataLoading(false);
+       
     })
 
      }, [id])
 
     const {serviceName,serviceCategory,cost,unit,image,description} = serviceData;
-
-  if(dataLoading)
-    {
-        return <Loading></Loading>
-    }    
 
 
     return (

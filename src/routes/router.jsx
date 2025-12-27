@@ -20,6 +20,7 @@ import MakeUserDecorator from "../pages/DashBoard/AdminDashBoard/MakeUserDecorat
 import AssignedProject from "../pages/DashBoard/DecoratorDashBoard/AssignedProject";
 import AdminRoute from "./AdminRoute";
 import DecoratorRoute from "./DecoratorRoute";
+import TodaysSchedule from "../pages/DashBoard/DecoratorDashBoard/TodaysSchedule";
 
 
 export const router= createBrowserRouter([
@@ -160,8 +161,7 @@ export const router= createBrowserRouter([
                <DecoratorRoute>
                   <AssignedProject></AssignedProject>
                </DecoratorRoute>
-            },
-
+            }
          ],
 
         
