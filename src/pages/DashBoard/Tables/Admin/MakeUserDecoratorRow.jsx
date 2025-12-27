@@ -2,15 +2,36 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Loading from '../../../Loading';
 
 const MakeUserDecoratorRow = ({customer}) => {
 
     const {image,name,email}= customer || {};
     const {register, handleSubmit} = useForm();
 
+    const queryClient = useQueryClient();
+    
     const axiosSecure= useAxiosSecure();
 
-    const handleFormSubmit = (data) => {
+    const{isPending, mutateAsync, reset}= useMutation({
+
+      mutationFn: async (roleInfo) => await axiosSecure.put('/make-user-decorator',roleInfo),
+      onSuccess : () => {
+         
+          toast.success('user role has been updated')
+          queryClient.invalidateQueries(['customers'])
+          reset();
+      },
+      onError: error => {
+         
+        toast.error(error.message);
+      }
+       
+    })
+
+
+    const handleFormSubmit = async (data) => {
 
         console.log(data);
 
@@ -22,19 +43,14 @@ const MakeUserDecoratorRow = ({customer}) => {
              role:roleStatus.toLowerCase()
         }
 
-       axiosSecure.put('/make-user-decorator',roleInfo)
-       .then(data => {
-        if(data.data)
-        {
-            toast.success('user role has been updated');
-        }
-       })
-        
-
-
-
-         
+        await mutateAsync(roleInfo);
+                
     }
+
+  if(isPending)
+  {
+    return <Loading></Loading>
+  }
     return (
 
            <tr>

@@ -1,22 +1,32 @@
-import React , {useState } from 'react';
-import useAuth from '../../../hooks/useAuth'
+import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import BookingTableRow from '../Tables/Users/BookingTableRow';
+import useAuth from '../../../hooks/useAuth'
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../../Loading';
 
 const ManageBooking = () => {
 
-   const {user} = useAuth();
+  const {user} = useAuth();
+
    const axiosSecure= useAxiosSecure();
 
-   const [bookings, setBookings] = useState([]);
+   const {data: bookings = [], isLoading} = useQuery({
+    
+       queryKey:['bookings',user?.email],
+       queryFn: async () =>
+       {
+        const result= await axiosSecure.get(`/my-bookings/${user?.email}`)
+        //console.log(result.data)
+        return result.data
+       }
 
-   
-   axiosSecure.get(`/my-bookings/${user?.email}`)
-    .then(res => {
-    console.log('The data is',res.data);
-    setBookings(res.data);
-  
    })
+
+   if(isLoading)
+   {
+    return <Loading></Loading>
+   }
 
 
     return (

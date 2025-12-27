@@ -1,24 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import MakeUserDecoratorRow from '../Tables/Admin/MakeUserDecoratorRow';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../../Loading';
 
 
 const MakeUserDecorator = () => {
-
     const axiosSecure= useAxiosSecure();
-    const [customers,setCustomers] = useState([]);
-    useEffect(() => {
-     
-    axiosSecure.get('/all-customers')
+
+    const {data : customers = [], isLoading} = useQuery({
     
-    .then(data => {
-         
-         setCustomers(data.data)
+        queryKey:['customers'],
+        queryFn: async () => {
+
+            const result =await axiosSecure.get('/all-customers')
+            return result.data;
+        }
+ 
+
+
     })
 
-    },[axiosSecure])
-
-    axiosSecure.get()
+    if(isLoading)
+    {
+        return <Loading></Loading>
+    }
+  
     return (
         <div>
             <table className="table">

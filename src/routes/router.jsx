@@ -17,6 +17,9 @@ import ManageAccount from "../pages/DashBoard/AdminDashBoard/ManageAccount";
 import PrivateRoute from "./PrivateRoute";
 import ReviewBooking from "../pages/DashBoard/AdminDashBoard/ReviewBooking";
 import MakeUserDecorator from "../pages/DashBoard/AdminDashBoard/MakeUserDecorator";
+import AssignedProject from "../pages/DashBoard/DecoratorDashBoard/AssignedProject";
+import AdminRoute from "./AdminRoute";
+import DecoratorRoute from "./DecoratorRoute";
 
 
 export const router= createBrowserRouter([
@@ -103,7 +106,7 @@ export const router= createBrowserRouter([
             },
 
              {
-              path:"payment-sucess",
+              path:"payment-success",
               element:<PaymentSuccess></PaymentSuccess>
           },
 
@@ -114,37 +117,50 @@ export const router= createBrowserRouter([
 
             {
                path:"manage-decorator",
-               element:<ManageDecorators></ManageDecorators>
+               element:<AdminRoute>
+                  <ManageDecorators></ManageDecorators>
+               </AdminRoute>
             },
 
             {
                path:"assign-decorator",
-               element:<AssignDecorator></AssignDecorator>
+               element:
+               <AdminRoute>
+                  <AssignDecorator></AssignDecorator>
+               </AdminRoute>
             },
 
             {
                path:"approve-decorators",
-               element:<ManageAccount></ManageAccount>
-            },
-
-            {
-               path:"manage-booking",
-               element:<ManageBooking></ManageBooking>
-               
+               element:
+               <AdminRoute>
+                  <ManageAccount></ManageAccount>
+               </AdminRoute>
             },
 
             {
                path:"review-booking",
-               element:<ReviewBooking></ReviewBooking>
+               element:
+               <AdminRoute>
+                  <ReviewBooking></ReviewBooking>
+               </AdminRoute>
             },
 
             {
                path:"user-decorator",
-               element:<MakeUserDecorator></MakeUserDecorator>
-            }
+               element:
+               <AdminRoute>
+                  <MakeUserDecorator></MakeUserDecorator>
+               </AdminRoute>
+            },
 
-
-
+            {
+               path:"assigned-project",
+               element:
+               <DecoratorRoute>
+                  <AssignedProject></AssignedProject>
+               </DecoratorRoute>
+            },
 
          ],
 

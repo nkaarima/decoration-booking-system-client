@@ -40,10 +40,9 @@ const BookModal = ({serviceData,closeModal, isOpen}) => {
              name: user?.displayName,
              email: user?.email
            }
-
          }
 
-         await axiosSecure.post('/my-bookings',bookingData)
+         await axiosSecure.post(`/my-bookings/${user?.email}`,bookingData)
          .then(res => {
            
             if(res.data.insertedId)

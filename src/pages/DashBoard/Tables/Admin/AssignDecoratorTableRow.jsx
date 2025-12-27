@@ -1,22 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../../../Loading';
 
 const AssignDecoratorTableRow = ({user}) => {
 
     const {_id,serviceDate,serviceCategory,location,customer} = user || {};
-    const [decorator,setDecorator] = useState([]);
-
+   
     const {register, handleSubmit} = useForm();
    
      const axiosSecure= useAxiosSecure();
-     axiosSecure.get('/all-decorators')
-     .then(data => {
-        setDecorator(data.data)
-     })
 
-     const date= new Date(serviceDate).toLocaleDateString();
+     const {data : decorator = [], isLoading}= useQuery({
+       
+        queryKey:['assignDecorator'],
+        queryFn: async () => {
+         const result= await axiosSecure.get('/all-decorators')
+         return result.data
+
+        }
+
+     })
+     if(isLoading)
+     {
+      return <Loading></Loading>
+     }
+
+     
+     const date= new Date(serviceDate).toLocaleDateString('en-GB');
 
      const handleFormSubmit = async (data) => {
 

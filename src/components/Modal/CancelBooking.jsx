@@ -3,22 +3,44 @@ import React from 'react';
 import { Link } from 'react-router';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import useAuth from '../../hooks/useAuth';
+import Loading from '../../pages/Loading';
 
 const CancelBooking = ({isCancel,closeCancelModal, booking}) => {
     
     const axiosSecure= useAxiosSecure();
+    const queryClient= useQueryClient()
+    const {user} = useAuth();
+
+    const {isPending,mutateAsync,reset} = useMutation({
+  
+      mutationFn: async (id) => await axiosSecure.delete(`/cancel-booking/${id}`),
+      onSuccess: () => {
+          toast.success('Booking has been cancelled');
+          reset()
+          queryClient.invalidateQueries(['bookings',user?.email])
+          closeCancelModal();
+      }
+
+
+    })
  
     const cancelBooking = async () => {
    
       const id= booking._id
-      console.log(id);
-      await axiosSecure.delete(`/cancel-booking/${id}`)
-      .then(res => {
-         console.log('The response is',res);
-      } )
-      toast.success('Booking has been cancelled');
-      closeCancelModal();
+      try {
+        await mutateAsync(id)
+      } catch(error)
+      {
+        toast.error(error.message)
+      }
 
+    }
+
+    if(isPending)
+    {
+      return <Loading></Loading>
     }
 
 

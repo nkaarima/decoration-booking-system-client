@@ -5,9 +5,10 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const PaymentModal = ({booking,isOpen,closeModal}) => {
 
-    const {serviceName,decorationCost,customer,decorationServiceId,location,serviceDate}= booking || {};
+    const {_id,serviceName,decorationCost,customer,decorationServiceId,location,serviceDate}= booking || {};
 
     const paymentInfo = {
+      _id,
        customer,
        serviceName,
        decorationCost,
@@ -61,8 +62,8 @@ const PaymentModal = ({booking,isOpen,closeModal}) => {
                                   type="button"
                                   onClick={handlePayment}
                                   className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                >
-                                  Pay
+                                
+                                >Pay
                                 </button>
             
                                 

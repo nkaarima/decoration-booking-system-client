@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import PaymentHistoryRow from '../Tables/Users/PaymentHistoryRow';
 import { useParams } from 'react-router';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../../Loading';
 
 const PaymentHistory = () => {
 
@@ -9,18 +11,22 @@ const PaymentHistory = () => {
 
     const axiosSecure= useAxiosSecure();
    
-    console.log('The email is',email);
+    //console.log('The email is',email);
+    const {data : paymentData = [], isLoading} = useQuery({
+   
+      queryKey: ['paymentInfo'],
+      queryFn: async () => {
 
-    const [paymentData,setPaymentData] = useState([]);
+        const result = await axiosSecure.get(`/payment-info/${email}`)
+        return result.data
+      }
 
-    
-     axiosSecure.get(`/payment-info/${email}`)
-     .then(data => {
+})
 
-          console.log('The data is:', data.data);     
-          setPaymentData(data.data)
-     })
-
+      if(isLoading)
+      {
+        return <Loading></Loading>
+      }
 
     return (
          <div className="overflow-x-auto w-11/12 mx-auto mt-3.5">
