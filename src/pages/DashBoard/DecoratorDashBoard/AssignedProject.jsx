@@ -4,7 +4,7 @@ import useAuth from '../../../hooks/useAuth';
 import AssignProjectRow from '../Tables/Decorator/AssignProjectRow';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../Loading';
-import TodaysSchedule from './TodaysSchedule';
+
 
 const AssignedProject = () => {
 
@@ -30,7 +30,7 @@ const AssignedProject = () => {
    
          
     return (
-        <div>
+        <div className="overflow-x-auto">
              <table className="table">
                {/* head */}
                <thead>

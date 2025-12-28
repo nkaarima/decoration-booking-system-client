@@ -1,16 +1,15 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project Name: Style Decor
 
-Currently, two official plugins are available:
+Purpose: This website provides various decoration packages for home, festivals, corporate events etc.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Live URL:https://decoration-booking-syste-92b01.web.app
 
-## React Compiler
+Key features:
+1. User can select their prefered package and make online payment
+2. Users can also cancel their booking. However, once payment is done, booking cannot be cancelled.
+3. For decorators, they can view projects that have been assigned to them and they can update their project progress in real-time
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+NPM packages used in this project:
+tailwindcss, daisyui, react-router, react-toastify, tanstack query,headless ui, react icons, axios,firebase

@@ -18,9 +18,9 @@ const EditService = ({isEdit,closeEditModal,service}) => {
    
      mutationFn: async (dataToBeUpdated) => await axiosSecure.put(`edit-service/${id}`,dataToBeUpdated),
            
-    onSuccess: data => {
+    onSuccess: () => {
     
-             console.log(data);
+             //console.log(data);
              toast.success('Edit is saved');
              reset()
              queryClient.invalidateQueries(['allServices'])
@@ -32,7 +32,7 @@ const EditService = ({isEdit,closeEditModal,service}) => {
     const handleFormSubmit = async (data) => 
     {
       
-         console.log('The data is here',data);
+         //console.log('The data is here',data);
 
          const {serviceName,serviceCategory,price,unit} = data;
 

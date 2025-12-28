@@ -17,14 +17,14 @@ const SignUp = () => {
 
          try{
 
-           console.log(data);
+           //console.log(data);
 
           const {name,email,image,password} = data;
           const imageFile= image[0];
 
           const imagePath= await imageUpload(imageFile);
 
-          console.log('Image Path is:',imagePath);
+          //console.log('Image Path is:',imagePath);
 
           await signUp(email,password);
 

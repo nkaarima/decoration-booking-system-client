@@ -25,7 +25,7 @@ const ManageAccount = () => {
     return (
           
           
-        <div>
+        <div className="overflow-x-auto">
                 <table className="table">
    
 

@@ -18,14 +18,14 @@ const BookModal = ({serviceData,closeModal, isOpen}) => {
 
     const handleFormSubmit =  async (data) => {
 
-        console.log(data);
+        //console.log(data);
         closeModal();
 
         const {bookingDate,location} = data;
 
         const serviceDate= new Date(bookingDate);
 
-        console.log(data);
+        //console.log(data);
        
          const bookingData= {
             

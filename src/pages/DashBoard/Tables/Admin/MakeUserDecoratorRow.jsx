@@ -33,7 +33,7 @@ const MakeUserDecoratorRow = ({customer}) => {
 
     const handleFormSubmit = async (data) => {
 
-        console.log(data);
+        //console.log(data);
 
         const {roleStatus} = data;
 

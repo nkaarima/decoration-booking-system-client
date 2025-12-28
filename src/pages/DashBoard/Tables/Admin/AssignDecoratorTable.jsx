@@ -4,11 +4,12 @@ import AssignDecoratorTableRow from './AssignDecoratorTableRow';
 const AssignDecoratorTable = ({paidUser}) => {
 
     return (
-        <div>
+        <div className="overflow-x-auto">
        <table className="table">
     {/* head */}
     <thead>
       <tr>
+        <th>Customer</th>
         <th>Service Date</th>
         <th>Service Category</th>
         <th>Location</th>

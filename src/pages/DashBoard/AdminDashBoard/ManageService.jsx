@@ -24,9 +24,9 @@ const ManageService = () => {
     const {isError,mutateAsync,reset:mutationReset} = useMutation({
  
       mutationFn: async (decorationService) => await axiosInstance.post('/service', decorationService),
-      onSuccess: data => {
+      onSuccess: () => {
 
-         console.log(data);
+         //console.log(data);
          toast.success('Saved to database')
          mutationReset()
          queryClient.invalidateQueries(['allServices'])
@@ -142,7 +142,7 @@ const ManageService = () => {
    
             </div>
 
-             <div>
+             <div className="overflow-x-auto">
                 <table className="table">
     {/* head */}
     <thead>

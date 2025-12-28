@@ -33,7 +33,7 @@ const AssignDecoratorTableRow = ({user}) => {
 
      const handleFormSubmit = async (data) => {
 
-        console.log(data);
+        //console.log(data);
 
         const {decoratorInfo}= data;
 
@@ -71,6 +71,8 @@ const AssignDecoratorTableRow = ({user}) => {
 
     return (
        <tr>
+
+         <td>{customer.name}</td>
        
          <td>
           

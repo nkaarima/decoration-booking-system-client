@@ -28,9 +28,9 @@ const TopDecorator = () => {
 
     const decorators= allDecorators.map((decorator,index) => ({...decorator, image: images[index]}))
     return (
-        <div className="w-11/12 mx-auto">
-            <h1 className="font-bold text-large text-center mb-6">Top Decorators</h1>
-            <div className="grid grid-cols-3">
+        <div className="">
+            <h1 className="font-bold text-large text-center mb-1.5">Top Decorators</h1>
+            <div className="grid grid-cols-1 md:grid-cols-3 items-center space-y-25 md:space-y-0">
                 {decorators.map(decorator => <TopDecoratorCard key={decorator._id} decorator={decorator}></TopDecoratorCard> )}
             </div>
         </div>

@@ -4,7 +4,7 @@ import CancelBooking from '../../../../components/Modal/CancelBooking';
 
 const BookingTableRow = ({booking}) => {
  
-   console.log(booking);
+   //console.log(booking);
 
    const [isOpen,setIsOpen] = useState(false);
    const [isCancel,setIsCancel] = useState(false);

@@ -22,7 +22,7 @@ const HeroDecorationService = () => {
   {
     return <Loading></Loading>
   }
-  console.log(serviceData);
+  //console.log(serviceData);
 
 
 

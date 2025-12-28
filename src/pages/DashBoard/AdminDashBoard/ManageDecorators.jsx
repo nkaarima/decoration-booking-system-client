@@ -2,16 +2,39 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import Loading from '../../Loading';
+import DecoratorInfoTableRow from '../Tables/Admin/DecoratorInfoTableRow';
 
 
 const ManageDecorators = () => {
 
     const {register, handleSubmit,reset} = useForm();
     const axiosSecure= useAxiosSecure();
+    const queryClient= useQueryClient();
 
-    const handleFormSubmit = (data) => {
+    const {data: decorators = [], isLoading} = useQuery({
+
+        queryKey:['decorator-account'],
+        queryFn: async () => {
+            const result= await axiosSecure.get('/all-decorators')
+            return result.data
+        } 
+    })
+
+    const {mutateAsync} = useMutation({
+
+        mutationFn: async (decoratorInfo) => await axiosSecure.post('/create-decorator',decoratorInfo),
+        onSuccess: () => {
+            toast.success('Data has been saved')
+            queryClient.invalidateQueries(['decorator-account'])
+
+        }
+    })
+
+    const handleFormSubmit = async (data) => {
       
-         console.log(data);
+         //console.log(data);
 
          const {name,email,speciality,skills,experience,rating} = data
 
@@ -25,17 +48,20 @@ const ManageDecorators = () => {
                 accountStatus:'pending'         
 
          }
-   
-         axiosSecure.post('/create-decorator',decoratorInfo)
-         .then(data => {
-            if(data.data.insertedId)
-            {
-               toast.success('Data is saved');
-            }
-            
-         })
-         reset();
 
+         try{
+            await mutateAsync(decoratorInfo)
+            reset();
+         } catch(error)
+         {
+            toast.error(error);
+         }
+
+    }
+
+    if(isLoading)
+    {
+        return <Loading></Loading>
     }
 
 
@@ -80,6 +106,31 @@ const ManageDecorators = () => {
 
                 </form>
    
+            </div>
+
+            <div className="overflow-x-auto">
+                <table className="table">
+             
+                        
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Speciality</th>
+                    <th>Skills</th>
+                    <th>Rating</th>
+                    <th>AccountStatus</th>
+                    
+                </tr>
+                </thead>
+     
+            <tbody>
+
+                 {decorators.map(decorator => <DecoratorInfoTableRow key={decorator._id} decorator={decorator} />)}
+            </tbody>
+
+
+                </table>
             </div>
         </div>
     );

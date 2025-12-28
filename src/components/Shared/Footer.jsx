@@ -5,40 +5,28 @@ import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <div className=" mt-40 bg-base-200">
-            <footer className="flex text-center space-y-2.5 flex-col items-start justify-between p-10 text-[18px] 
-                    md:flex-row">
-             
-             <div>
-                 <p className="font-bold">Contact us</p>
-                 <p>smart_decor@gmail.com</p>
-                 <p>+880171588700</p>
-             </div>
-   
-            {/* Social media links */}          
-            
-             <div>
-
-               <p className="font-bold">Social Links</p>
-                
-                <div className="flex">
-                    <a><FaFacebookF></FaFacebookF></a>
-                    <a><FaInstagram></FaInstagram></a>
-                </div>
-              
-             
-             </div>
-
-             <div>
-                  Working hours
-                <p>Sun-Thurs,8am-8pm</p>
-             </div>
-               
+        
+        <footer className="footer sm:footer-horizontal bg-[#9ba59c]  text-small p-10">
+                <nav>
+                    <h6 className="footer-title">Our Contacts</h6>
+                    <a className="link link-hover">style_decor@gmail.com</a>
+                    <a className="link link-hover">+880171588700</a>
+                </nav>
+                <nav>
+                    <h6 className="footer-title">Available Time and Day</h6>
+                    <a className="link link-hover">Sun-Thurs</a>
+                    <a className="link link-hover">8am-8pm</a>
+                </nav>
+                <nav>
+                    <h6 className="footer-title">Social</h6>
+                    <div className="grid grid-flow-col gap-4">
                    
-            </footer>
-
-             <p className="text-center">2025 All Rights Reserved- Smart Decor</p>  
-        </div>
+                       <FaFacebookF></FaFacebookF>
+                       <FaInstagram></FaInstagram>
+                 
+                    </div>
+                </nav>
+        </footer>
     );
 };
 
